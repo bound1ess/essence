@@ -21,9 +21,31 @@ class EssenceTest extends \TestCase
         $this->assertArrayHasKey("foo", $output);
         $this->assertInternalType("array", $output["foo"]);
 
-        $this->setExpectedException("Essence\Exceptions\InvalidConfigurationException");
+        $this->setExpectedException("Essence\Exceptions\InvalidConfigurationException", null);
         $this->subject->configure(function() {
             return null;
         });
+    }
+
+    /**
+     * @test
+     */
+    public function it_throws_an_exception_specified_by_the_configuration()
+    {
+        $this->setExpectedException("Essence\Exceptions\AssertionException", null);
+        $this->subject->throwOnFailure();
+    }
+
+    /**
+     * @test
+     */
+    public function it_allows_you_to_change_the_exception_class()
+    {
+        $this->subject->configure(function() {
+            return ["exception" => "RuntimeException"];
+        });
+
+        $this->setExpectedException("RuntimeException", "foobar");
+        $this->subject->throwOnFailure("foobar");
     }
 }

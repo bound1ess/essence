@@ -8,7 +8,23 @@ class Essence
     /**
      * @var array
      */
-    protected $configuration = [];
+    protected $configuration = [
+        "exception" => "Essence\Exceptions\AssertionException",
+    ];
+
+    /**
+     * Throws an exception (specified in the configuration) with the given error message.
+     *
+     * @param string|null $message
+     * @throws Exceptions\AssertionException|object
+     * @return void
+     */
+    public function throwOnFailure($message = null)
+    {
+        $class = $this->configuration["exception"];
+
+        throw new $class($message);
+    }
 
     /**
      * Returns the configuration array.
