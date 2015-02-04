@@ -18,6 +18,9 @@
         "psr-4": {
             "Essence\\": "src/Essence/"
         },
-        "files": ["tests/TestCase.php"]
+        "files": [
+            "tests/TestCase.php",
+            "src/Essence/functions.php"
+        ]
     }
 }
