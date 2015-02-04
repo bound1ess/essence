@@ -101,6 +101,7 @@ class Essence
     {
         if ( ! $this->builder->validate()) {
             $this->throwOnFailure($this->builder->getMessage());
+            // @codeCoverageIgnoreStart
         }
     }
 }
