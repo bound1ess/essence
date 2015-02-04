@@ -1,0 +1,22 @@
+{
+    "name": "bound1ess/essence",
+    "description":
+    "Highly opinionated PHP assertion framework providing clean and flexible BDD style API.",
+    "license": "MIT",
+
+    "require": {
+        "php-packages/container": "~1",
+        "php-packages/fluent": "~1"
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "~4",
+        "mockery/mockery": "~0.9"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Essence\\": "src/Essence/"
+        }
+    }
+}
