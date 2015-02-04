@@ -11,6 +11,16 @@ class Essence
     protected $configuration = [];
 
     /**
+     * Returns the configuration array.
+     *
+     * @return array
+     */
+    public function getConfiguration()
+    {
+        return $this->configuration;
+    }
+
+    /**
      * Allows you to configure Essence via a Closure.
      *
      * @param Closure $callback
@@ -18,6 +28,6 @@ class Essence
      */
     public function configure(Closure $callback)
     {
-        // @todo
+        $this->configuration = $callback($this->configuration);
     }
 }
