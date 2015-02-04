@@ -17,6 +17,7 @@
     "autoload": {
         "psr-4": {
             "Essence\\": "src/Essence/"
-        }
+        },
+        "files": ["tests/TestCase.php"]
     }
 }
