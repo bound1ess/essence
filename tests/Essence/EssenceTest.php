@@ -19,5 +19,11 @@ class EssenceTest extends \TestCase
         $this->assertInternalType("array", $output = $this->subject->getConfiguration());
         $this->assertCount(1, $output);
         $this->assertArrayHasKey("foo", $output);
+        $this->assertInternalType("array", $output["foo"]);
+
+        $this->setExpectedException("Essence\Exceptions\InvalidConfigurationException");
+        $this->subject->configure(function() {
+            return null;
+        });
     }
 }

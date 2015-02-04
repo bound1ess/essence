@@ -28,6 +28,10 @@ class Essence
      */
     public function configure(Closure $callback)
     {
-        $this->configuration = $callback($this->configuration);
+        if ( ! is_array($configuration = $callback($this->configuration))) {
+            throw new Exceptions\InvalidConfigurationException($configuration);
+        }
+
+        $this->configuration = $configuration;
     }
 }
