@@ -17,7 +17,7 @@ class EssenceTest extends \TestCase
         });
 
         $this->assertInternalType("array", $output = $this->subject->getConfiguration());
-        $this->assertCount(1, $output);
+        $this->assertNotCount(0, $output);
         $this->assertArrayHasKey("foo", $output);
         $this->assertInternalType("array", $output["foo"]);
 
@@ -25,6 +25,22 @@ class EssenceTest extends \TestCase
         $this->subject->configure(function() {
             return null;
         });
+    }
+
+    /**
+     * @test
+     */
+    public function it_will_override_the_configuration_with_default_values_if_you_mess_up()
+    {
+        $key = array_keys($configuration = $this->subject->getConfiguration())[0];
+
+        $this->assertArrayHasKey($key, $configuration);
+
+        $this->subject->configure(function() {
+            return [];
+        });
+
+        $this->assertArrayHasKey($key, $this->subject->getConfiguration());
     }
 
     /**

@@ -13,6 +13,19 @@ class Essence
     ];
 
     /**
+     * @var array
+     */
+    protected $defaultConfiguration;
+
+    /**
+     * @return Essence
+     */
+    public function __construct()
+    {
+        $this->defaultConfiguration = $this->configuration;
+    }
+
+    /**
      * Throws an exception (specified in the configuration) with the given error message.
      *
      * @param string|null $message
@@ -48,6 +61,6 @@ class Essence
             throw new Exceptions\InvalidConfigurationException($configuration);
         }
 
-        $this->configuration = $configuration;
+        $this->configuration = array_merge($this->defaultConfiguration, $configuration);
     }
 }
