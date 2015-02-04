@@ -64,4 +64,21 @@ class EssenceTest extends \TestCase
         $this->setExpectedException("RuntimeException", "foobar");
         $this->subject->throwOnFailure("foobar");
     }
+
+    /**
+     * @test
+     */
+    public function it_validates_the_assertion_on_destruction_event()
+    {
+        $builder = \Mockery::mock("Essence\AssertionBuilder");
+
+        $builder->shouldReceive("validate")->once()->andReturn(false);
+        $builder->shouldReceive("getMessage")->once()->andReturn("foobar");
+
+        $this->assertInstanceOf("Essence\AssertionBuilder", $this->subject->getBuilder());
+        $this->subject->setBuilder($builder);
+
+        $this->setExpectedException("Essence\Exceptions\AssertionException", "foobar");
+        unset($this->subject);
+    }
 }

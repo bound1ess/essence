@@ -72,6 +72,27 @@ class Essence
     }
 
     /**
+     * Returns the currently stored instance of AssertionBuilder.
+     *
+     * @return AssertionBuilder
+     */
+    public function getBuilder()
+    {
+        return $this->builder;
+    }
+
+    /**
+     * Replaces the stored AssertionBuilder instance with the given one.
+     *
+     * @param AssertionBuilder $builder
+     * @return void
+     */
+    public function setBuilder(AssertionBuilder $builder)
+    {
+        $this->builder = $builder;
+    }
+
+    /**
      * This trick allows us to implicitly perform the validation.
      *
      * @return void
