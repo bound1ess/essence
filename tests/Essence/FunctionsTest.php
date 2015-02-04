@@ -27,4 +27,12 @@ class FunctionsTest extends TestCase
             $this->assertInstanceOf("Essence\Essence", $instance);
         }
     }
+
+    /**
+     * @test
+     */
+    public function it_provides_wrappers_for_better_readability()
+    {
+        $this->assertEquals(expect(123), 123);
+    }
 }

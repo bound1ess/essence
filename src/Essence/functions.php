@@ -40,3 +40,10 @@ if ( ! function_exists("those")) {
         return it($value);
     }
 }
+
+if ( ! function_exists("expect")) {
+    function expect($value)
+    {
+        return $value;
+    }
+}
