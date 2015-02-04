@@ -18,11 +18,18 @@ class Essence
     protected $defaultConfiguration;
 
     /**
+     * @var AssertionBuilder
+     */
+    protected $builder;
+
+    /**
+     * @param mixed $value
      * @return Essence
      */
-    public function __construct()
+    public function __construct($value = null)
     {
         $this->defaultConfiguration = $this->configuration;
+        $this->builder = new AssertionBuilder($value);
     }
 
     /**
@@ -62,5 +69,17 @@ class Essence
         }
 
         $this->configuration = array_merge($this->defaultConfiguration, $configuration);
+    }
+
+    /**
+     * This trick allows us to implicitly perform the validation.
+     *
+     * @return void
+     */
+    public function __destruct()
+    {
+        if ( ! $this->builder->validate()) {
+            $this->throwOnFailure($this->builder->getMessage());
+        }
     }
 }
