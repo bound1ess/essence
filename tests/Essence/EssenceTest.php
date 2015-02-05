@@ -72,15 +72,28 @@ class EssenceTest extends \TestCase
     {
         $builder = \Mockery::mock("Essence\AssertionBuilder");
 
-        $builder->shouldReceive("validate")->twice()->andReturn(true, false);
+        $builder->shouldReceive("validate")->once()->andReturn(false);
         $builder->shouldReceive("getMessage")->once()->andReturn("foobar");
 
         $this->assertInstanceOf("Essence\AssertionBuilder", $this->subject->getBuilder());
         $this->subject->setBuilder($builder);
 
-        $this->assertEquals($this->subject->finish(), null);
-
         $this->setExpectedException("Essence\Exceptions\AssertionException", "foobar");
         $this->subject->finish();
+    }
+
+    /**
+     * @test
+     */
+    public function it_redirects_calls()
+    {
+        $builder = \Mockery::mock("Essence\AssertionBuilder");
+
+        $builder->shouldReceive("foo")->twice();
+
+        $this->subject->setBuilder($builder);
+
+        $this->subject->foo();
+        $this->subject->foo;
     }
 }

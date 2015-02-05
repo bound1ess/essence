@@ -103,8 +103,10 @@ class Essence
     {
         if ( ! $this->builder->validate()) {
             $this->throwOnFailure($this->builder->getMessage());
+            // @codeCoverageIgnoreStart
         }
     }
+    // @codeCoverageIgnoreEnd
 
     /**
      * Redirects all calls (to undefined methods) to the builder instance.
