@@ -74,6 +74,8 @@ class EssenceTest extends \TestCase
 
         $builder->shouldReceive("validate")->once()->andReturn(false);
         $builder->shouldReceive("getMessage")->once()->andReturn("foobar");
+        $builder->shouldReceive("setLinks")->once();
+        $builder->shouldReceive("setMatchers")->once();
 
         $this->assertInstanceOf("Essence\AssertionBuilder", $this->subject->getBuilder());
         $this->subject->setBuilder($builder);

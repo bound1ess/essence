@@ -143,6 +143,9 @@ class Essence
      */
     public function go()
     {
+        $this->builder->setLinks($this->configuration["links"]);
+        $this->builder->setMatchers($this->configuration["matchers"]);
+
         if ( ! $this->builder->validate()) {
             $this->throwOnFailure($this->builder->getMessage());
             // @codeCoverageIgnoreStart
