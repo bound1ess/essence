@@ -46,6 +46,19 @@ class EssenceTest extends \TestCase
     /**
      * @test
      */
+    public function it_returns_a_single_configuration_value()
+    {
+        $this->subject->configure(function() {
+            return ["foo" => 123];
+        });
+
+        $this->assertEquals($this->subject->getConfiguration("foo"), 123);
+        $this->assertEquals($this->subject->getConfiguration("bar"), null);
+    }
+
+    /**
+     * @test
+     */
     public function it_throws_an_exception_specified_by_the_configuration()
     {
         $this->setExpectedException("Essence\Exceptions\AssertionException", null);

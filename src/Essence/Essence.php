@@ -89,12 +89,18 @@ class Essence
     }
 
     /**
-     * Returns the configuration array.
+     * Returns the configuration array or a single value.
      *
-     * @return array
+     * @param string|null $key
+     * @return array|mixed|null
      */
-    public function getConfiguration()
+    public function getConfiguration($key = null)
     {
+        if ( ! is_null($key)) {
+            return array_key_exists($key, $this->configuration)
+                ? $this->configuration[$key] : null;
+        }
+
         return $this->configuration;
     }
 
