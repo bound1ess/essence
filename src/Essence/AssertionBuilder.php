@@ -26,6 +26,11 @@ class AssertionBuilder
     protected $matchers = [];
 
     /**
+     * @var boolean
+     */
+    protected $inverse = false;
+
+    /**
      * @param mixed $value
      * @return AssertionBuilder
      */
@@ -83,7 +88,26 @@ class AssertionBuilder
      */
     public function validate()
     {
-        return false; // or true
+        $matchers = [];
+
+        foreach ($this->getFluent()->getCalls() as $key) {
+            if ("not" == $key) {
+                $this->inverse = ! $this->inverse;
+            } elseif ( ! is_array($key)
+                && ! in_array($key, $this->links)
+                && "should" != $key) {
+
+                $matchers[] = $key;
+            }
+        }
+
+        foreach ($matchers as $matcher) {
+            $class = $this->aliasToMatcher(is_array($matcher) ? $matcher[0] : $matcher);
+
+            var_dump($class);
+        }
+
+        return true;
     }
 
     /**
@@ -94,5 +118,23 @@ class AssertionBuilder
     public function getMessage()
     {
         return $this->message;
+    }
+
+    /**
+     * Returns the "true" matcher's name (class name) by one of its aliases.
+     *
+     * @param string $alias
+     * @throws Exceptions\UnknownAliasException
+     * @return string
+     */
+    protected function aliasToMatcher($alias)
+    {
+        foreach ($this->matchers as $matcher => $aliases) {
+            if (in_array($alias, $aliases)) {
+                return $matcher;
+            }
+        }
+
+        throw new Exceptions\UnknownAliasException($alias);
     }
 }
