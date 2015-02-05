@@ -10,6 +10,48 @@ class Essence
      */
     protected $configuration = [
         "exception" => "Essence\Exceptions\AssertionException",
+
+        "links" => [
+            "to",
+            "at",
+            "of",
+            "is",
+            "have",
+            "has",
+            "be",
+            "been",
+            "with",
+            "that",
+            "and",
+            "same",
+        ],
+
+        "matchers" => [
+            "Essence\Matchers\TypeMatcher"     => ["a", "an"],
+            "Essence\Matchers\ContainMatcher"  => ["contain", "include"],
+            "Essence\Matchers\PositiveMatcher" => ["ok", "fine"],
+            "Essence\Matchers\TrueMatcher"     => ["true"],
+            "Essence\Matchers\FalseMatcher"    => ["false"],
+            "Essence\Matchers\NullMatcher"     => ["null"],
+            "Essence\Matchers\EmptyMatcher"    => ["empty"],
+            "Essence\Matchers\EqualMatcher"    => ["equal"],
+            "Essence\Matchers\AboveMatcher"    => ["above"],
+            "Essence\Matchers\LeastMatcher"    => ["least"],
+            "Essence\Matchers\BelowMatcher"    => ["below"],
+            "Essence\Matchers\MostMatcher"     => ["most"],
+            "Essence\Matchers\WithinMatcher"   => ["within"],
+            "Essence\Matchers\PropertyMatcher" => ["property"],
+            "Essence\Matchers\LengthMatcher"   => ["length"],
+            "Essence\Matchers\MatchMatcher"    => ["match"],
+            "Essence\Matchers\StringMatcher"   => ["string"],
+            "Essence\Matchers\KeysMatcher"     => ["keys"],
+            "Essence\Matchers\ValuesMatcher"   => ["values"],
+            "Essence\Matchers\ThrowMatcher"    => ["throw"],
+            "Essence\Matchers\RespondMatcher"  => ["respond"],
+            "Essence\Matchers\SatisfyMatcher"  => ["satisfy"],
+            "Essence\Matchers\CloseMatcher"    => ["close"],
+            "Essence\Matchers\MembersMatcher"  => ["members"],
+        ],
     ];
 
     /**
