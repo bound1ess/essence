@@ -105,4 +105,32 @@ class Essence
             $this->throwOnFailure($this->builder->getMessage());
         }
     }
+
+    /**
+     * Redirects all calls (to undefined methods) to the builder instance.
+     *
+     * @param string $name
+     * @param array $arguments
+     * @return object
+     */
+    public function __call($name, array $arguments)
+    {
+        call_user_func_array([$this->builder, $name], $arguments);
+
+        return $this;
+    }
+
+    /**
+     * Same, but for undefined properties.
+     *
+     * @see Essence::__call
+     * @param string $name
+     * @return object
+     */
+    public function __get($name)
+    {
+        call_user_func_array([$this->builder, $name], []);
+
+        return $this;
+    }
 }
