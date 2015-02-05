@@ -9,16 +9,27 @@ abstract class AbstractMatcher implements MatcherInterface
     protected $value;
 
     /**
+     * @var array
+     */
+    protected $arguments;
+
+    /**
      * @var boolean
      */
     protected $configurationOnly;
 
     /**
+     * @var string
+     */
+    protected $message = "";
+
+    /**
      * {@inheritdoc}
      */
-    public function __construct($value, $configurationOnly)
+    public function __construct($value, array $arguments, $configurationOnly)
     {
         $this->value = $value;
+        $this->arguments = $arguments;
         $this->configurationOnly = $configurationOnly;
     }
 
@@ -30,5 +41,8 @@ abstract class AbstractMatcher implements MatcherInterface
     /**
      * {@inheritdoc}
      */
-    abstract public function getMessage();
+    public function getMessage()
+    {
+        return $this->message;
+    }
 }

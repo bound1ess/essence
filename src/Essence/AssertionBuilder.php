@@ -92,16 +92,32 @@ class AssertionBuilder
 
         foreach ($this->getFluent()->getCalls() as $key) {
             if ("not" == $key) {
-                $this->inverse = ! $this->inverse;
-            } elseif (is_array($key) || (! in_array($key, $this->links) && "should" != $key)) {
+                $this->inverse = true;
+
+                continue;
+            }
+
+            if (is_array($key)) {
+                $matchers[] = $key;
+
+                continue;
+            }
+
+            if ( ! in_array($key, $this->links) && "should" != $key) {
                 $matchers[] = $key;
             }
         }
 
         foreach ($matchers as $matcher) {
-            $class = $this->aliasToMatcher(is_array($matcher) ? $matcher[0] : $matcher);
+            $matcher = $this->aliasToMatcher(is_array($matcher) ? $matcher[0] : $matcher);
 
-            var_dump($class);
+            if ( ! class_exists($matcher)) {
+                throw new Exceptions\NoMatcherFound($matcher);
+            }
+
+            $matcher = new $matcher;
+
+            //var_dump($matcher);
         }
 
         return true;

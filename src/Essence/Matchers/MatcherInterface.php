@@ -5,9 +5,10 @@ interface MatcherInterface
 
     /**
      * @param mixed $value
+     * @param array $arguments
      * @param boolean $configurationOnly
      */
-    public function __construct($value, $configurationOnly);
+    public function __construct($value, array $arguments, $configurationOnly);
 
     /**
      * Whether the given value is valid (in terms of the matcher).
