@@ -79,7 +79,7 @@ class EssenceTest extends \TestCase
         $this->subject->setBuilder($builder);
 
         $this->setExpectedException("Essence\Exceptions\AssertionException", "foobar");
-        $this->subject->finish();
+        $this->subject->go();
     }
 
     /**

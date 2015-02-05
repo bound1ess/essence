@@ -94,12 +94,12 @@ class Essence
     }
 
     /**
-     * Allows us to implicitly perform the validation.
+     * Allows us to explicitly perform the validation.
      *
      * @throws Exceptions\AssertionException|object
      * @return void
      */
-    public function finish()
+    public function go()
     {
         if ( ! $this->builder->validate()) {
             $this->throwOnFailure($this->builder->getMessage());
