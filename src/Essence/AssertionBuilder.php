@@ -6,6 +6,15 @@ class AssertionBuilder
     use \PhpPackages\Fluent\FluentTrait;
 
     /**
+     * @param mixed $value
+     * @return AssertionBuilder
+     */
+    public function __construct($value = null)
+    {
+        // @todo
+    }
+
+    /**
      * Updates the list of available links.
      *
      * @param array $links

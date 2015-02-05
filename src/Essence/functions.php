@@ -13,8 +13,8 @@ if ( ! function_exists("essence_get_container")) {
     }
 }
 
-if ( ! function_exists("it")) {
-    function it($value)
+if ( ! function_exists("essence")) {
+    function essence($value)
     {
         static $instance;
 
@@ -30,31 +30,38 @@ if ( ! function_exists("it")) {
     }
 }
 
+if ( ! function_exists("it")) {
+    function it($value)
+    {
+        return essence($value);
+    }
+}
+
 if ( ! function_exists("this")) {
     function this($value)
     {
-        return it($value);
+        return essence($value);
     }
 }
 
 if ( ! function_exists("these")) {
     function these($value)
     {
-        return it($value);
+        return essence($value);
     }
 }
 
 if ( ! function_exists("those")) {
     function those($value)
     {
-        return it($value);
+        return essence($value);
     }
 }
 
 if ( ! function_exists("that")) {
     function that($value)
     {
-        return it($value);
+        return essence($value);
     }
 }
 

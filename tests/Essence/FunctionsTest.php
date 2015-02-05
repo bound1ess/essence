@@ -19,9 +19,19 @@ class FunctionsTest extends TestCase
     /**
      * @test
      */
-    public function it_provides_four_entry_points()
+    public function it_returns_the_same_instance_of_Essence()
     {
-        $instances = [it(null), this(null), these(null), those(null)];
+        $this->assertInstanceOf("Essence\Essence", $essence = essence(null));
+
+        $this->assertSame($essence, essence(null));
+    }
+
+    /**
+     * @test
+     */
+    public function it_provides_five_entry_points()
+    {
+        $instances = [it(null), this(null), these(null), those(null), that(null)];
 
         foreach ($instances as $instance) {
             $this->assertInstanceOf("Essence\Essence", $instance);
