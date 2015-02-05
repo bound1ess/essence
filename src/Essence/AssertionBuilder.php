@@ -6,12 +6,32 @@ class AssertionBuilder
     use \PhpPackages\Fluent\FluentTrait;
 
     /**
+     * @var mixed
+     */
+    protected $value;
+
+    /**
+     * @var null|string
+     */
+    protected $message;
+
+    /**
+     * @var array
+     */
+    protected $links = [];
+
+    /**
+     * @var array
+     */
+    protected $matchers = [];
+
+    /**
      * @param mixed $value
      * @return AssertionBuilder
      */
     public function __construct($value = null)
     {
-        // @todo
+        $this->value = $value;
     }
 
     /**
@@ -22,7 +42,17 @@ class AssertionBuilder
      */
     public function setLinks(array $links)
     {
-        // @todo
+        $this->links = $links;
+    }
+
+    /**
+     * Returns the links stored.
+     *
+     * @return array
+     */
+    public function getLinks()
+    {
+        return $this->links;
     }
 
     /**
@@ -33,7 +63,17 @@ class AssertionBuilder
      */
     public function setMatchers(array $matchers)
     {
-        // @todo
+        $this->matchers = $matchers;
+    }
+
+    /**
+     * Returns the matchers stored.
+     *
+     * @return array
+     */
+    public function getMatchers()
+    {
+        return $this->matchers;
     }
 
     /**
@@ -53,6 +93,6 @@ class AssertionBuilder
      */
     public function getMessage()
     {
-        return "something or null";
+        return $this->message;
     }
 }
