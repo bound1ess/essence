@@ -70,7 +70,7 @@ class EssenceTest extends \TestCase
      */
     public function it_validates_the_assertion()
     {
-        $builder = \Mockery::mock("Essence\AssertionBuilder");
+        $builder = $this->mockAssertionBuilder();
 
         $builder->shouldReceive("validate")->once()->andReturn(false);
         $builder->shouldReceive("getMessage")->once()->andReturn("foobar");
@@ -87,7 +87,7 @@ class EssenceTest extends \TestCase
      */
     public function it_redirects_calls()
     {
-        $builder = \Mockery::mock("Essence\AssertionBuilder");
+        $builder = $this->mockAssertionBuilder();
 
         $builder->shouldReceive("foo")->twice();
 
@@ -95,5 +95,10 @@ class EssenceTest extends \TestCase
 
         $this->subject->foo();
         $this->subject->foo;
+    }
+
+    protected function mockAssertionBuilder()
+    {
+        return \Mockery::mock("Essence\AssertionBuilder");
     }
 }
