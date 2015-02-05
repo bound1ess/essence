@@ -59,6 +59,7 @@ class Essence
     /**
      * Allows you to configure Essence via a Closure.
      *
+     * @throws Exceptions\InvalidConfiguraitonException
      * @param Closure $callback
      * @return void
      */
@@ -93,15 +94,15 @@ class Essence
     }
 
     /**
-     * This trick allows us to implicitly perform the validation.
+     * Allows us to implicitly perform the validation.
      *
+     * @throws Exceptions\AssertionException|object
      * @return void
      */
-    public function __destruct()
+    public function finish()
     {
         if ( ! $this->builder->validate()) {
             $this->throwOnFailure($this->builder->getMessage());
-            // @codeCoverageIgnoreStart
         }
     }
 }
