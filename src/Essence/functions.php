@@ -16,7 +16,17 @@ if ( ! function_exists("essence_get_container")) {
 if ( ! function_exists("it")) {
     function it($value)
     {
-        return essence_get_container()->make("Essence\Essence", [$value]);
+        static $instance;
+
+        if ( ! is_object($instance)) {
+            $instance = essence_get_container()->make("Essence\Essence", [$value]);
+        } else {
+            $instance->setBuilder(
+                essence_get_container()->make("Essence\AssertionBuilder", [$value])
+            );
+        }
+
+        return $instance;
     }
 }
 
@@ -36,6 +46,13 @@ if ( ! function_exists("these")) {
 
 if ( ! function_exists("those")) {
     function those($value)
+    {
+        return it($value);
+    }
+}
+
+if ( ! function_exists("that")) {
+    function that($value)
     {
         return it($value);
     }
