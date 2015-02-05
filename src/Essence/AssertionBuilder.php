@@ -93,10 +93,7 @@ class AssertionBuilder
         foreach ($this->getFluent()->getCalls() as $key) {
             if ("not" == $key) {
                 $this->inverse = ! $this->inverse;
-            } elseif ( ! is_array($key)
-                && ! in_array($key, $this->links)
-                && "should" != $key) {
-
+            } elseif (is_array($key) || (! in_array($key, $this->links) && "should" != $key)) {
                 $matchers[] = $key;
             }
         }
