@@ -5,6 +5,8 @@ class LengthMatcherTest extends \TestCase
 
     protected $subject = "Essence\Matchers\LengthMatcher";
 
+    protected $arguments = ["foobar", [6], false];
+
     /**
      * @test
      */

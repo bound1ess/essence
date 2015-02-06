@@ -123,8 +123,6 @@ class AssertionBuilder
             );
         }
 
-        var_dump($matchers);
-
         return true;
     }
 
