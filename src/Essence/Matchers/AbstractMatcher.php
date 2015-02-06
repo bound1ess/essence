@@ -21,7 +21,7 @@ abstract class AbstractMatcher implements MatcherInterface
     /**
      * @var string|null
      */
-    protected $message = null;
+    protected $message;
 
     /**
      * {@inheritdoc}

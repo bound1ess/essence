@@ -134,10 +134,10 @@ class AssertionBuilder
         // #3: run the matchers!
         foreach ($matchers as $matcher) {
             if ( ! $matcher->run()) {
+                $this->message = $matcher->getMessage();
+
                 return false;
             }
-
-            $this->message = $matcher->getMessage();
         }
 
         return true;

@@ -7,4 +7,9 @@ class LengthMatcherStub
     {
         return false;
     }
+
+    public function getMessage()
+    {
+        return "foobar";
+    }
 }
