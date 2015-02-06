@@ -16,4 +16,14 @@ class LengthMatcherTest extends \TestCase
         // Arrays.
         // Objects (keys).
     }
+
+    /**
+     * @test
+     */
+    public function it_throws_UnintendedUsage_exception()
+    {
+        $this->setExpectedException("Essence\Exceptions\UnintendedUsageException");
+
+        (new LengthMatcher(null, [], true))->run();
+    }
 }

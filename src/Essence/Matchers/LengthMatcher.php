@@ -8,6 +8,8 @@ class LengthMatcher extends AbstractMatcher
      */
     public function run()
     {
-        // @todo
+        if ($this->configurationOnly) {
+            throw new \Essence\Exceptions\UnintendedUsageException;
+        }
     }
 }
