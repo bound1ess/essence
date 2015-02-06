@@ -45,4 +45,13 @@ abstract class AbstractMatcher implements MatcherInterface
     {
         return $this->message;
     }
+
+    /**
+     * @throws \Essence\Exceptions\UnintendedUsageException
+     * @return void
+     */
+    protected function throwUnintendedUsageException()
+    {
+        throw new \Essence\Exceptions\UnintendedUsageException;
+    }
 }

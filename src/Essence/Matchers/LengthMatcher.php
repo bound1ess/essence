@@ -9,7 +9,7 @@ class LengthMatcher extends AbstractMatcher
     public function run()
     {
         if ($this->configurationOnly) {
-            throw new \Essence\Exceptions\UnintendedUsageException;
+            $this->throwUnintendedUsageException();
         }
 
         $length = end($this->arguments);
@@ -27,6 +27,6 @@ class LengthMatcher extends AbstractMatcher
             return count(get_object_vars($this->value)) === $length;
         }
 
-        throw new \Essence\Exceptions\UnintendedUsageException;
+        $this->throwUnintendedUsageException();
     }
 }
