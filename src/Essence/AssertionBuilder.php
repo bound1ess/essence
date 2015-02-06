@@ -84,6 +84,7 @@ class AssertionBuilder
     /**
      * Performs the validation.
      *
+     * @throws Exceptions\NoMatcherFound
      * @return boolean
      */
     public function validate()
@@ -108,17 +109,17 @@ class AssertionBuilder
             }
         }
 
-        foreach ($matchers as $matcher) {
+        foreach ($matchers as $key => $matcher) {
             $matcher = $this->aliasToMatcher(is_array($matcher) ? $matcher[0] : $matcher);
 
             if ( ! class_exists($matcher)) {
                 throw new Exceptions\NoMatcherFound($matcher);
             }
 
-            $matcher = new $matcher;
-
-            //var_dump($matcher);
+            $matchers[$key] = new $matcher;
         }
+
+        var_dump($matchers);
 
         return true;
     }

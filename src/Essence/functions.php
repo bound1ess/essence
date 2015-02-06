@@ -18,6 +18,8 @@ if ( ! function_exists("essence")) {
     {
         static $instance;
 
+        $value = raw($value);
+
         if ( ! is_object($instance)) {
             $instance = essence_get_container()->make("Essence\Essence", [$value]);
         } else {
