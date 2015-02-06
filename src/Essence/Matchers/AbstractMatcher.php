@@ -19,9 +19,9 @@ abstract class AbstractMatcher implements MatcherInterface
     protected $configurationOnly;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected $message = "";
+    protected $message = null;
 
     /**
      * {@inheritdoc}
@@ -44,6 +44,15 @@ abstract class AbstractMatcher implements MatcherInterface
     public function getMessage()
     {
         return $this->message;
+    }
+
+    /**
+     * @param string $message
+     * @return void
+     */
+    protected function setMessage($message)
+    {
+        $this->message = $message;
     }
 
     /**

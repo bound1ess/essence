@@ -5,7 +5,7 @@ class LengthMatcherTest extends \TestCase
 
     protected $subject = "Essence\Matchers\LengthMatcher";
 
-    protected $arguments = ["foobar", [6], false];
+    protected $arguments = ["foobar", [50], false];
 
     /**
      * @test
@@ -13,7 +13,9 @@ class LengthMatcherTest extends \TestCase
     public function it_works_as_expected()
     {
         // Strings.
-        $this->assertTrue($this->subject->run());
+        $this->assertNull($this->subject->getMessage());
+        $this->assertFalse($this->subject->run());
+        $this->assertNotNull($this->subject->getMessage());
 
         // Arrays.
         $this->assertFalse((new LengthMatcher([1, 2, 3], [10], false))->run());

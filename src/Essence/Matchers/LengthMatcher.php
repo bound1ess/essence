@@ -10,23 +10,40 @@ class LengthMatcher extends AbstractMatcher
     {
         if ($this->configurationOnly) {
             $this->throwUnintendedUsageException();
+            // @codeCoverageIgnoreStart
         }
+        // @codeCoverageIgnoreEnd
 
         $length = end($this->arguments);
+        $actualLength = null;
 
         if (is_string($this->value)) {
             // @suggestion: multibyte?
-            return strlen($this->value) === $length;
+            $actualLength = strlen($this->value);
         }
 
         if (is_array($this->value)) {
-            return count($this->value) === $length;
+            $actualLength = count($this->value);
         }
 
         if (is_object($this->value)) {
-            return count(get_object_vars($this->value)) === $length;
+            $actualLength = count(get_object_vars($this->value));
         }
 
-        $this->throwUnintendedUsageException();
+        if (is_null($actualLength)) {
+            $this->throwUnintendedUsageException();
+            // @codeCoverageIgnoreStart
+        }
+        // @codeCoverageIgnoreEnd
+
+        if ($length !== $actualLength) {
+            $this->setMessage(sprintf(
+                "Length: %s (expected) !== %s (actual)", $length, $actualLength
+            ));
+
+            return false;
+        }
+
+        return true;
     }
 }
