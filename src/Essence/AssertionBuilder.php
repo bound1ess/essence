@@ -110,13 +110,17 @@ class AssertionBuilder
         }
 
         foreach ($matchers as $key => $matcher) {
-            $matcher = $this->aliasToMatcher(is_array($matcher) ? $matcher[0] : $matcher);
+            $class = $this->aliasToMatcher(is_array($matcher) ? $matcher[0] : $matcher);
 
-            if ( ! class_exists($matcher)) {
-                throw new Exceptions\NoMatcherFound($matcher);
+            if ( ! class_exists($class)) {
+                throw new Exceptions\NoMatcherFound($class);
             }
 
-            $matchers[$key] = new $matcher;
+            $matchers[$key] = new $class(
+                $this->value,
+                (is_array($matcher) ? $matcher[1] : []),
+                (count($matchers) - 1) == $key && count($matchers) != 1
+            );
         }
 
         var_dump($matchers);
