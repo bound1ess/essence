@@ -65,9 +65,29 @@ class AssertionBuilderTest extends \TestCase
     /**
      * @test
      */
-    public function it_returns_a_validation_message()
+    public function it_throws_UnknownAlias_exception()
     {
-        // @todo
-        $this->assertNull($this->subject->getMessage());
+        $this->setExpectedException("Essence\Exceptions\UnknownAliasException");
+
+        $fluent = \Mockery::mock("PhpPackages\Fluent\Fluent");
+        $fluent->shouldReceive("getCalls")->once()->andReturn(["of"]);
+        $this->subject->setFluent($fluent);
+
+        $this->subject->validate();
+    }
+
+    /**
+     * @test
+     */
+    public function it_throws_NoMatcherFound_exception()
+    {
+        $this->setExpectedException("Essence\Exceptions\NoMatcherFoundException");
+
+        $fluent = \Mockery::mock("PhpPackages\Fluent\Fluent");
+        $fluent->shouldReceive("getCalls")->once()->andReturn(["length"]);
+        $this->subject->setFluent($fluent);
+        $this->subject->setMatchers([uniqid() => ["length"]]);
+
+        $this->subject->validate();
     }
 }

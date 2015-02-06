@@ -84,7 +84,7 @@ class AssertionBuilder
     /**
      * Performs the validation.
      *
-     * @throws Exceptions\NoMatcherFound
+     * @throws Exceptions\NoMatcherFoundException
      * @return boolean
      */
     public function validate()
@@ -119,7 +119,7 @@ class AssertionBuilder
             $class = $this->aliasToMatcher(is_array($matcher) ? $matcher[0] : $matcher);
 
             if ( ! class_exists($class)) {
-                throw new Exceptions\NoMatcherFound($class);
+                throw new Exceptions\NoMatcherFoundException($class);
             }
 
             $matchers[$key] = new $class(
