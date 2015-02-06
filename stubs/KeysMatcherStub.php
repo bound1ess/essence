@@ -7,4 +7,9 @@ class KeysMatcherStub
     {
         return true;
     }
+
+    public function getMessage()
+    {
+        return "foobar";
+    }
 }

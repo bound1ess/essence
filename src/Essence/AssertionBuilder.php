@@ -136,6 +136,8 @@ class AssertionBuilder
             if ( ! $matcher->run()) {
                 return false;
             }
+
+            $this->message = $matcher->getMessage();
         }
 
         return true;
