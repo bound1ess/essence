@@ -13,8 +13,18 @@ class LengthMatcherTest extends \TestCase
     public function it_works_as_expected()
     {
         // Strings.
+        $this->assertTrue($this->subject->run());
+
         // Arrays.
+        $this->assertFalse((new LengthMatcher([1, 2, 3], [10], false))->run());
+
         // Objects (keys).
+        $object = (object)["foo" => 123, "bar" => 321];
+        $this->assertTrue((new LengthMatcher($object, [2], false))->run());
+
+        // Anlything else.
+        $this->setExpectedException("Essence\Exceptions\UnintendedUsageException");
+        (new LengthMatcher(null, [1], false))->run();
     }
 
     /**
