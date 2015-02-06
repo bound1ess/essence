@@ -43,10 +43,11 @@ class AssertionBuilderTest extends \TestCase
         $fluent = \Mockery::mock("PhpPackages\Fluent\Fluent");
 
         $fluent->shouldReceive("getCalls")
-               ->twice()
+               ->times(3)
                ->andReturn(
                    ["should", "not", "of"],
-                   ["keys", ["length", 6]]
+                   ["keys"],
+                   [["length", 6]]
                );
 
         $this->subject->setFluent($fluent);
@@ -58,6 +59,7 @@ class AssertionBuilderTest extends \TestCase
 
         $this->assertTrue($this->subject->validate());
         $this->assertTrue($this->subject->validate());
+        $this->assertFalse($this->subject->validate());
     }
 
     /**

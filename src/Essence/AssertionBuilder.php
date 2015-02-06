@@ -123,10 +123,12 @@ class AssertionBuilder
             }
 
             $matchers[$key] = new $class(
+                // @codeCoverageIgnoreStart
                 $this->value,
                 (is_array($matcher) ? $matcher[1] : []),
                 (count($matchers) - 1) == $key && count($matchers) != 1
             );
+            // @codeCoverageIgnoreEnd
         }
 
         // #3: run the matchers!
