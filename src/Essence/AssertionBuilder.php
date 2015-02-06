@@ -91,6 +91,7 @@ class AssertionBuilder
     {
         $matchers = [];
 
+        // #1: find matchers.
         foreach ($this->getFluent()->getCalls() as $key) {
             if ("not" == $key) {
                 $this->inverse = true;
@@ -109,6 +110,11 @@ class AssertionBuilder
             }
         }
 
+        if (count($matchers) == 0) {
+            return true;
+        }
+
+        // #2: initialize the matchers.
         foreach ($matchers as $key => $matcher) {
             $class = $this->aliasToMatcher(is_array($matcher) ? $matcher[0] : $matcher);
 
@@ -121,6 +127,13 @@ class AssertionBuilder
                 (is_array($matcher) ? $matcher[1] : []),
                 (count($matchers) - 1) == $key && count($matchers) != 1
             );
+        }
+
+        // #3: run the matchers!
+        foreach ($matchers as $matcher) {
+            if ( ! $matcher->run()) {
+                return false;
+            }
         }
 
         return true;

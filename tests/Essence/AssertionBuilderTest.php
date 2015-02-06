@@ -40,8 +40,24 @@ class AssertionBuilderTest extends \TestCase
      */
     public function it_performs_the_validation_process()
     {
-        // @todo
-        $this->assertFalse($this->subject->validate());
+        $fluent = \Mockery::mock("PhpPackages\Fluent\Fluent");
+
+        $fluent->shouldReceive("getCalls")
+               ->twice()
+               ->andReturn(
+                   ["should", "not", "of"],
+                   ["keys", ["length", 6]]
+               );
+
+        $this->subject->setFluent($fluent);
+        $this->subject->setLinks(["of", "have"]);
+        $this->subject->setMatchers([
+            "KeysMatcherStub"   => ["keys"],
+            "LengthMatcherStub" => ["length"],
+        ]);
+
+        $this->assertTrue($this->subject->validate());
+        $this->assertTrue($this->subject->validate());
     }
 
     /**

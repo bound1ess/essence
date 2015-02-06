@@ -22,5 +22,9 @@
             "tests/TestCase.php",
             "src/Essence/functions.php"
         ]
+    },
+
+    "autoload-dev": {
+        "classmap": ["stubs/"]
     }
 }
