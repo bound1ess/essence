@@ -131,7 +131,7 @@ class AssertionBuilder
                 // @codeCoverageIgnoreStart
                 $this->value,
                 (is_array($matcher) ? $matcher[1] : []),
-                (count($matchers) - 1) == $key && count($matchers) != 1
+                (count($matchers) - 1 != $key) && count($matchers) != 1
             );
             // @codeCoverageIgnoreEnd
         }
