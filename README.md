@@ -26,6 +26,6 @@ Read the [documentation](http://bound1ess.github.io/essence).
 - keys
 - values
 - throw (done)
-- respond
+- respond (done)
 - close
 - members
