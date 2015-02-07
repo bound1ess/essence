@@ -100,7 +100,12 @@ class AssertionBuilder
             }
 
             if (is_array($key)) {
-                $matchers[] = $key;
+                if (in_array($key[0], $this->links) and count($matchers) > 0) {
+                    $lastIndex = count($matchers) - 1;
+                    $matchers[$lastIndex] = [$matchers[$lastIndex], $key[1]];
+                } else {
+                    $matchers[] = $key;
+                }
 
                 continue;
             }

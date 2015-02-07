@@ -47,7 +47,7 @@ class AssertionBuilderTest extends \TestCase
                ->andReturn(
                    ["should", "not", "of"],
                    ["keys"],
-                   [["length", 6]]
+                   ["have", ["length", 6]]
                );
 
         $this->subject->setFluent($fluent);
