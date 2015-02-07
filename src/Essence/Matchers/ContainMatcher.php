@@ -8,7 +8,14 @@ class ContainMatcher extends AbstractMatcher
      */
     public function run()
     {
+        $configuration = essence()->getConfiguration("matcher_settings");
+
+        if (array_key_exists(__CLASS__, $configuration)) {
+            $this->value = $configuration[__CLASS__];
+        }
+
         $element = end($this->arguments);
+
         $ofCorrectType = (is_array($this->value) or is_string($this->value));
 
         if ($this->configurationOnly or ! $ofCorrectType) {
