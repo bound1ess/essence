@@ -8,7 +8,7 @@ Read the [documentation](http://bound1ess.github.io/essence).
 
 - length (done)
 - type
-- contain
+- contain (done)
 - positive (done)
 - true (done)
 - false (done)
