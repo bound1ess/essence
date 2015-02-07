@@ -11,7 +11,7 @@ Read the [documentation](http://bound1ess.github.io/essence).
 - contain
 - positive
 - true (done)
-- false
+- false (done)
 - null
 - empty
 - equal

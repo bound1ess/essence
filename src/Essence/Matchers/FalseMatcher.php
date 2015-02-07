@@ -1,6 +1,6 @@
 <?php namespace Essence\Matchers;
 
-class TrueMatcher extends AbstractMatcher
+class FalseMatcher extends AbstractMatcher
 {
 
     /**
@@ -14,8 +14,8 @@ class TrueMatcher extends AbstractMatcher
         }
         // @codeCoverageIgnoreEnd
 
-        if ($this->value !== true) {
-            $this->setMessage("TrueMatcher: true (expected) !== false (actual)");
+        if ($this->value !== false) {
+            $this->setMessage("FalseMatcher: false (expected) !== true (actual)");
 
             return false;
         }
