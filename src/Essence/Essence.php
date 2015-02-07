@@ -44,7 +44,7 @@ class Essence
             "Essence\Matchers\LengthMatcher"   => ["length"],
             "Essence\Matchers\MatchMatcher"    => ["match"],
             //"Essence\Matchers\StringMatcher"   => ["string"],
-            "Essence\Matchers\KeysMatcher"     => ["keys"],
+            "Essence\Matchers\KeysMatcher"     => ["keys", "key"],
             "Essence\Matchers\ValuesMatcher"   => ["values"],
             "Essence\Matchers\ThrowMatcher"    => ["throw"],
             "Essence\Matchers\RespondMatcher"  => ["respond"],
@@ -52,6 +52,8 @@ class Essence
             "Essence\Matchers\CloseMatcher"    => ["close"],
             "Essence\Matchers\MembersMatcher"  => ["members"],
         ],
+
+        "matcher_settings" => [],
     ];
 
     /**

@@ -14,7 +14,7 @@ if ( ! function_exists("essence_get_container")) {
 }
 
 if ( ! function_exists("essence")) {
-    function essence($value)
+    function essence($value = null)
     {
         static $instance;
 

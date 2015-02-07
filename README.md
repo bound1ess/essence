@@ -23,7 +23,7 @@ Read the [documentation](http://bound1ess.github.io/essence).
 - most
 - within
 - match
-- keys
+- keys (done)
 - values
 - throw (done)
 - respond (done)
