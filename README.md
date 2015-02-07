@@ -9,11 +9,11 @@ Read the [documentation](http://bound1ess.github.io/essence).
 - length (done)
 - type
 - contain
-- positive
+- positive (done)
 - true (done)
 - false (done)
 - null (done)
-- empty
+- empty (done)
 - equal
 - above
 - least
