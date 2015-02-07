@@ -131,16 +131,22 @@ class AssertionBuilder
             // @codeCoverageIgnoreEnd
         }
 
+        $result = true;
+
         // #3: run the matchers!
         foreach ($matchers as $matcher) {
             if ( ! $matcher->run()) {
                 $this->message = $matcher->getMessage();
+                $result = false;
 
-                return false;
+                break;
             }
         }
 
-        return true;
+        $result = ( ! $this->inverse) ? $result : ( ! $result);
+        $this->inverse = false;
+
+        return $result;
     }
 
     /**

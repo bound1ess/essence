@@ -60,7 +60,7 @@ class AssertionBuilderTest extends \TestCase
         $this->assertNull($this->subject->getMessage());
 
         $this->assertTrue($this->subject->validate());
-        $this->assertTrue($this->subject->validate());
+        $this->assertFalse($this->subject->validate());
         $this->assertFalse($this->subject->validate());
 
         $this->assertEquals($this->subject->getMessage(), "foobar");
