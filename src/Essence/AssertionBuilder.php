@@ -143,8 +143,12 @@ class AssertionBuilder
             }
         }
 
-        $result = ( ! $this->inverse) ? $result : ( ! $result);
-        $this->inverse = false;
+        if ($this->inverse) {
+            $this->inverse = false;
+            $result = ! $result;
+
+            $this->message = "The keyword NOT was used to inverse the result.";
+        }
 
         return $result;
     }
