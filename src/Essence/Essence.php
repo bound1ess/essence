@@ -15,7 +15,7 @@ class Essence
             "to",
             "at",
             "of",
-            "is",
+            //"is",
             "have",
             "has",
             "be",
