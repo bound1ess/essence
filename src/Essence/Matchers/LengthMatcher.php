@@ -8,14 +8,14 @@ class LengthMatcher extends AbstractMatcher
      */
     public function run()
     {
-        if ($this->configurationOnly) {
+        $length = end($this->arguments);
+        $actualLength = null;
+
+        if ($this->configurationOnly or ! is_int($length)) {
             $this->throwUnintendedUsageException();
             // @codeCoverageIgnoreStart
         }
         // @codeCoverageIgnoreEnd
-
-        $length = end($this->arguments);
-        $actualLength = null;
 
         if (is_string($this->value)) {
             // @suggestion: multibyte?

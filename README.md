@@ -12,7 +12,7 @@ Read the [documentation](http://bound1ess.github.io/essence).
 - positive
 - true (done)
 - false (done)
-- null
+- null (done)
 - empty
 - equal
 - above
