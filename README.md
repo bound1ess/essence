@@ -4,6 +4,8 @@ Read the [documentation](http://bound1ess.github.io/essence).
 
 ## Checklist
 
+...
+
 ### Matchers
 
 - length (done)
@@ -20,14 +22,10 @@ Read the [documentation](http://bound1ess.github.io/essence).
 - below
 - most
 - within
-- property
 - match
-- string
 - keys
 - values
 - throw
 - respond
-- satisfy
 - close
 - members
-
