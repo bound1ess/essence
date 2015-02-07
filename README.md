@@ -10,7 +10,7 @@ Read the [documentation](http://bound1ess.github.io/essence).
 - type
 - contain
 - positive
-- true
+- true (done)
 - false
 - null
 - empty
