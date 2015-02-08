@@ -67,13 +67,12 @@ class Essence
     protected $builder;
 
     /**
-     * @param mixed $value
      * @return Essence
      */
-    public function __construct($value = null)
+    public function __construct()
     {
         $this->defaultConfiguration = $this->configuration;
-        $this->builder = new AssertionBuilder($value);
+        //$this->builder = new AssertionBuilder($value);
     }
 
     /**

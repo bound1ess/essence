@@ -90,8 +90,8 @@ class EssenceTest extends \TestCase
         $builder->shouldReceive("setLinks")->once();
         $builder->shouldReceive("setMatchers")->once();
 
-        $this->assertInstanceOf("Essence\AssertionBuilder", $this->subject->getBuilder());
         $this->subject->setBuilder($builder);
+        $this->assertInstanceOf("Essence\AssertionBuilder", $this->subject->getBuilder());
 
         $this->setExpectedException("Essence\Exceptions\AssertionException", "foobar");
         $this->subject->go();

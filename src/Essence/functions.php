@@ -14,15 +14,17 @@ if ( ! function_exists("essence_get_container")) {
 }
 
 if ( ! function_exists("essence")) {
-    function essence($value = null)
+    function essence()
     {
         static $instance;
 
-        $value = raw($value);
-
         if ( ! is_object($instance)) {
-            $instance = essence_get_container()->make("Essence\Essence", [$value]);
-        } else {
+            $instance = essence_get_container()->make("Essence\Essence");
+        }
+
+        if (count(func_get_args()) > 0) {
+            $value = raw(func_get_args()[0]);
+
             $instance->setBuilder(
                 essence_get_container()->make("Essence\AssertionBuilder", [$value])
             );
