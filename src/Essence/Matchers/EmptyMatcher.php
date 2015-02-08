@@ -6,19 +6,28 @@ class EmptyMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+    protected $valueType = [
+        "string",
+        "integer",
+        "double",
+        "array",
+        "object",
+        "NULL",
+        "boolean",
+    ];
+
+    /**
+     * {@inheritdoc}
+     */
     public function run()
     {
-        if ($this->configurationOnly) {
-            $this->throwUnintendedUsageException();
-            // @codeCoverageIgnoreStart
-        }
-        // @codeCoverageIgnoreEnd
+        parent::run();
 
         if ( ! empty ($this->value)) {
-            $this->setMessage(sprintf(
+            $this->setMessage(
                 "EmptyMatcher: the given %s is not empty.",
-                gettype($this->value)
-            ));
+                [gettype($this->value)]
+            );
 
             return false;
         }

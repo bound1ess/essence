@@ -6,22 +6,22 @@ class RespondMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+    protected $valueType = ["object", "string"];
+
+    /**
+     * {@inheritdoc}
+     */
     public function run()
     {
-        $object = $this->value;
-        $method = end($this->arguments);
+        parent::run();
 
-        if ($this->configurationOnly or ! is_object($object) or ! is_string($method)) {
-            $this->throwUnintendedUsageException();
-            // @codeCoverageIgnoreStart
-        }
-        // @codeCoverageIgnoreEnd
+        list($method) = $this->arguments;
 
         if ( ! method_exists($object, $method)) {
-            $this->setMessage(sprintf(
+            $this->setMessage(
                 "RespondMatcher: the given object does not have a method called '%s'.",
-                $method
-            ));
+                [$method]
+            );
 
             return false;
         }

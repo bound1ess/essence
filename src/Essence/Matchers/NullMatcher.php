@@ -6,19 +6,28 @@ class NullMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+    protected $valueType = [
+        "string",
+        "integer",
+        "double",
+        "array",
+        "object",
+        "NULL",
+        "boolean",
+    ];
+
+    /**
+     * {@inheritdoc}
+     */
     public function run()
     {
-        if ($this->configurationOnly) {
-            $this->throwUnintendedUsageException();
-            // @codeCoverageIgnoreStart
-        }
-        // @codeCoverageIgnoreEnd
+        parent::run();
 
         if ( ! is_null($this->value)) {
-            $this->setMessage(sprintf(
+            $this->setMessage(
                 "NullMatcher: type NULL (expected) !== %s (actual).",
-                gettype($this->value)
-            ));
+                [gettype($this->value)]
+            );
 
             return false;
         }

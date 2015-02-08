@@ -6,8 +6,15 @@ class ContainMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+    protected $valueType = ["string", "array"];
+
+    /**
+     * {@inheritdoc}
+     */
     public function run()
     {
+        parent::run();
+
         $configuration = essence()->getConfiguration("matcher_settings");
 
         if (array_key_exists(__CLASS__, $configuration)) {
@@ -19,16 +26,7 @@ class ContainMatcher extends AbstractMatcher
             });
         }
 
-        $element = end($this->arguments);
-
-        $ofCorrectType = (is_array($this->value) or is_string($this->value));
-
-        if ($this->configurationOnly or ! $ofCorrectType) {
-            $this->throwUnintendedUsageException();
-            // @codeCoverageIgnoreStart
-        }
-        // @codeCoverageIgnoreEnd
-
+        list($element) = $this->arguments;
         $result = true;
 
         if (is_string($this->value)) {
@@ -40,11 +38,10 @@ class ContainMatcher extends AbstractMatcher
         }
 
         if ( ! $result) {
-            $this->setMessage(sprintf(
+            $this->setMessage(
                 "ContainMatcher: the given %s does not contain the given %s value.",
-                gettype($this->value),
-                gettype($element)
-            ));
+                [gettype($this->value), gettype($element)]
+            );
 
             return false;
         }

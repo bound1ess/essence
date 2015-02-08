@@ -6,23 +6,25 @@ class MostMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+    protected $valueType = ["integer"];
+
+    /**
+     * {@inheritdoc}
+     */
     public function run()
     {
-        if ($this->configurationOnly or ! is_int($this->value)) {
-            $this->throwUnintendedUsageException();
-            // @codeCoverageIgnoreStart
-        }
-        // @codeCoverageIgnoreEnd
+        parent::run();
 
-        if ($this->value <= ($number = end($this->arguments))) {
+        list($number) = $this->arguments;
+
+        if ($this->value <= $number) {
             return true;
         }
 
-        $this->setMessage(sprintf(
+        $this->setMessage(
             "MostMatcher: %s is not equal to %s, or less.",
-            $this->value,
-            $number
-        ));
+            [$this->value, $number]
+        );
 
         return false;
     }

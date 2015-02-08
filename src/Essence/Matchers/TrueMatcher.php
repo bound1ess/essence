@@ -6,13 +6,14 @@ class TrueMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+    protected $valueType = ["boolean"];
+
+    /**
+     * {@inheritdoc}
+     */
     public function run()
     {
-        if ($this->configurationOnly or ! is_bool($this->value)) {
-            $this->throwUnintendedUsageException();
-            // @codeCoverageIgnoreStart
-        }
-        // @codeCoverageIgnoreEnd
+        parent::run();
 
         if ($this->value !== true) {
             $this->setMessage("TrueMatcher: true (expected) !== false (actual).");

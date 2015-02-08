@@ -4,9 +4,9 @@ class TypeMatcher extends AbstractMatcher
 {
 
     /**
-     * @var array
+     * {@inheritdoc}
      */
-    protected $types = [
+    protected $valueType = [
         "string",
         "integer",
         "double",
@@ -21,24 +21,19 @@ class TypeMatcher extends AbstractMatcher
      */
     public function run()
     {
-        $type = end($this->arguments);
+        parent::run();
 
-        if ($this->configurationOnly or ! is_string($type)) {
-            $this->throwUnintendedUsageException();
-            // @codeCoverageIgnoreStart
-        }
-        // @codeCoverageIgnoreEnd
+        list($type) = $this->arguments;
 
         if (in_array($type, $this->types)) {
             if (gettype($this->value) == $type) {
                 return true;
             }
 
-            $this->setMessage(sprintf(
+            $this->setMessage(
                 "TypeMatcher: the given %s is not of the type '%s'.",
-                gettype($this->value),
-                $type
-            ));
+                [gettype($this->value), $type]
+            );
 
             return false;
         } else {
@@ -46,11 +41,10 @@ class TypeMatcher extends AbstractMatcher
                 return true;
             }
 
-            $this->setMessage(sprintf(
+            $this->setMessage(
                 "TypeMatcher: the given %s is not an instance of '%s'.",
-                gettype($this->value),
-                $type
-            ));
+                [gettype($this->value), $type]
+            );
 
             return false;
         }

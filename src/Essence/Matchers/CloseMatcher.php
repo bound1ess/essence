@@ -6,24 +6,21 @@ class CloseMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+    protected $valueType = ["double"];
+
+    /**
+     * {@inheritdoc}
+     */
     public function run()
     {
-        $number = $this->value;
+        parent::run();
 
-        if ($this->configurationOnly or ! is_float($number)) {
-            $this->throwUnintendedUsageException();
-            // @codeCoverageIgnoreStart
-        }
-        // @codeCoverageIgnoreEnd
+        list($number, $delta) = $this->arguments;
 
-        list($value, $delta) = $this->arguments;
-
-        if (abs($number - $value) > $delta) {
-            $this->setMessage(sprintf(
-                "CloseMatcher: %s is not approximately equal to %s.",
-                $number,
-                $value
-            ));
+        if (abs($this->value - $number) > $delta) {
+            $this->setMessage(
+                "CloseMatcher: %s is not approximately equal to %s.", [$this->value, $number]
+            );
 
             return false;
         }

@@ -6,17 +6,20 @@ class KeysMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+    protected $valueType = ["array", "object"];
+
+    /**
+     * {@inheritdoc}
+     */
     public function run()
     {
+        parent::run();
+
         if (is_array($this->value)) {
             $keys = array_keys($this->value);
-        } elseif (is_object($this->value)) {
-            $keys = array_keys(get_object_vars($this->value));
         } else {
-            $this->throwUnintendedUsageException();
-            // @codeCoverageIgnoreStart
+            $keys = array_keys(get_object_vars($this->value));
         }
-        // @codeCoverageIgnoreEnd
 
         if ($this->configurationOnly) {
             essence()->configure(function($configuration) use ($keys) {
@@ -28,19 +31,18 @@ class KeysMatcher extends AbstractMatcher
             return true;
         }
 
-        $searchFor = end($this->arguments);
+        list($elements) = $this->arguments;
 
-        if ( ! is_array($searchFor)) {
-            $searchFor = [$searchFor];
+        if ( ! is_array($elements)) {
+            $elements = [$elements];
         }
 
-        foreach ($searchFor as $key) {
+        foreach ($elements as $key) {
             if ( ! in_array($key, $keys, true)) {
-                $this->setMessage(sprintf(
+                $this->setMessage(
                     "KeysMatcher: the key '%s' does not exist in the given %s.",
-                    $key,
-                    gettype($this->value)
-                ));
+                    [$key, gettype($this->value)]
+                );
 
                 return false;
             }

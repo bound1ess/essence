@@ -6,22 +6,31 @@ class PositiveMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+    protected $valueType = [
+        "string",
+        "integer",
+        "double",
+        "array",
+        "object",
+        "NULL",
+        "boolean",
+    ];
+
+    /**
+     * {@inheritdoc}
+     */
     public function run()
     {
-        if ($this->configurationOnly) {
-            $this->throwUnintendedUsageException();
-            // @codeCoverageIgnoreStart
-        }
-        // @codeCoverageIgnoreEnd
+        parent::run();
 
         if ( !! $this->value) {
             return true;
         }
 
-        $this->setMessage(sprintf(
+        $this->setMessage(
             "PositiveMatcher: the given %s is not positive.",
-            gettype($this->value)
-        ));
+            [gettype($this->value)]
+        );
 
         return false;
     }

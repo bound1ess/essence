@@ -6,16 +6,17 @@ class LengthMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+    protected $valueType = ["string", "object", "array"];
+
+    /**
+     * {@inheritdoc}
+     */
     public function run()
     {
-        $length = end($this->arguments);
-        $actualLength = null;
+        parent::run();
 
-        if ($this->configurationOnly or ! is_int($length)) {
-            $this->throwUnintendedUsageException();
-            // @codeCoverageIgnoreStart
-        }
-        // @codeCoverageIgnoreEnd
+        list($length) = $this->arguments;
+        $actualLength = null;
 
         if (is_string($this->value)) {
             // @suggestion: multibyte?
@@ -30,16 +31,11 @@ class LengthMatcher extends AbstractMatcher
             $actualLength = count(get_object_vars($this->value));
         }
 
-        if (is_null($actualLength)) {
-            $this->throwUnintendedUsageException();
-            // @codeCoverageIgnoreStart
-        }
-        // @codeCoverageIgnoreEnd
-
         if ($length !== $actualLength) {
-            $this->setMessage(sprintf(
-                "LengthMatcher: %s (expected) !== %s (actual).", $length, $actualLength
-            ));
+            $this->setMessage(
+                "LengthMatcher: %s (expected) !== %s (actual).",
+                [$length, $actualLength]
+            );
 
             return false;
         }

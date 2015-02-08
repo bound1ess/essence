@@ -1,22 +1,21 @@
 <?php namespace Essence\Matchers;
 
-use Closure;
-
 class ThrowMatcher extends AbstractMatcher
 {
 
     /**
      * {@inheritdoc}
      */
+    protected $valueType = ["object"];
+
+    /**
+     * {@inheritdoc}
+     */
     public function run()
     {
-        $class = end($this->arguments);
+        parent::run();
 
-        if ($this->configurationOnly or ! ($this->value instanceof Closure)) {
-            $this->throwUnintendedUsageException();
-            // @codeCoverageIgnoreStart
-        }
-        // @codeCoverageIgnoreEnd
+        list($class) = $this->arguments;
 
         try
         {
@@ -28,11 +27,10 @@ class ThrowMatcher extends AbstractMatcher
             if (get_class($exception) == $class) {
                 return true;
             } else {
-                $this->setMessage(sprintf(
+                $this->setMessage(
                     "ThrowMatcher: %s was expected, but got %s.",
-                    $class,
-                    get_class($exception)
-                ));
+                    [$class, get_class($exception)]
+                );
 
                 return false;
             }

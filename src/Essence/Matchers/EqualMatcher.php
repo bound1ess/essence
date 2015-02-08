@@ -6,23 +6,33 @@ class EqualMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+    protected $valueType = [
+        "string",
+        "integer",
+        "double",
+        "array",
+        "object",
+        "NULL",
+        "boolean",
+    ];
+
+    /**
+     * {@inheritdoc}
+     */
     public function run()
     {
-        if ($this->configurationOnly) {
-            $this->throwUnintendedUsageException();
-            // @codeCoverageIgnoreStart
-        }
-        // @codeCoverageIgnoreEnd
+        parent::run();
 
-        if ($this->value === ($value = end($this->arguments))) {
+        list($anotherValue) = $this->arguments;
+
+        if ($this->value === $anotherValue) {
             return true;
         }
 
-        $this->setMessage(sprintf(
+        $this->setMessage(
             "EqualMatcher: the given value of type %s !== the given %s.",
-            gettype($this->value),
-            gettype($value)
-        ));
+            [gettype($this->value), gettype($value)]
+        );
 
         return false;
     }

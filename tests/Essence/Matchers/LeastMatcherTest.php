@@ -15,6 +15,6 @@ class LeastMatcherTest extends \MatcherTestCase
         $this->assertFalse($matcher->run());
         $this->assertNotNull($matcher->getMessage());
 
-        $this->assertTrue((new LeastMatcher(15, [13])->run());
+        $this->assertTrue((new LeastMatcher(15, [13]))->run());
     }
 }

@@ -6,13 +6,14 @@ class WithinMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+    protected $valueType = ["integer"];
+
+    /**
+     * {@inheritdoc}
+     */
     public function run()
     {
-        if ($this->configurationOnly or ! is_numeric($this->value)) {
-            $this->throwUnintendedUsageException();
-            // @codeCoverageIgnoreStart
-        }
-        // @codeCoverageIgnoreEnd
+        parent::run();
 
         list($least, $most) = $this->arguments;
 
@@ -20,12 +21,10 @@ class WithinMatcher extends AbstractMatcher
             return true;
         }
 
-        $this->setMessage(sprintf(
+        $this->setMessage(
             "WithinMatcher: (%s <= %s <= %s) === FALSE.",
-            $least,
-            $this->value,
-            $most
-        ));
+            [$least, $this->value, $most]
+        );
 
         return false;
     }

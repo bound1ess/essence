@@ -6,23 +6,19 @@ class MatchMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+    protected $valueType = ["string"];
+
+    /**
+     * {@inheritdoc}
+     */
     public function run()
     {
-        $subject = $this->value;
-        $pattern = end($this->arguments);
+        parent::run();
 
-        if ($this->configurationOnly or ! is_string($subject)) {
-            $this->throwUnintendedUsageException();
-            // @codeCoverageIgnoreStart
-        }
-        // @codeCoverageIgnoreEnd
+        list($pattern) = $this->arguments;
 
-        if ( ! preg_match($pattern, $subject)) {
-            $this->setMessage(sprintf(
-                "MatchMatcher: '%s' does not match '%s'.",
-                $subject,
-                $pattern
-            ));
+        if ( ! preg_match($pattern, $this->value)) {
+            $this->setMessage("MatchMatcher: '%s' does not match '%s'.", [$subject, $pattern]);
 
             return false;
         }
