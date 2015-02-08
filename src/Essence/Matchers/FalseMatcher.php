@@ -6,15 +6,7 @@ class FalseMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
-    protected $valueType = [
-        "string",
-        "integer",
-        "double",
-        "array",
-        "object",
-        "NULL",
-        "boolean",
-    ];
+    protected $valueType = ["boolean"];
 
     /**
      * {@inheritdoc}

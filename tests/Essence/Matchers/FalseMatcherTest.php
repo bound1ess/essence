@@ -17,8 +17,4 @@ class FalseMatcherTest extends \MatcherTestCase
 
         $this->assertTrue((new FalseMatcher(false))->run());
     }
-
-    public function it_throws_an_exception_if_you_pass_wrong_value_to_the_matcher()
-    {
-    }
 }
