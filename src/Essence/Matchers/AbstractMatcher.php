@@ -11,9 +11,18 @@ abstract class AbstractMatcher implements MatcherInterface
     protected $value;
 
     /**
+     * The matcher arguments, can be an empty array (if there are none).
+     *
      * @var array
      */
     protected $arguments;
+
+    /**
+     * The type(s) that the passed value should be of (one of them).
+     *
+     * @var array
+     */
+    protected $valueType = [];
 
     /**
      * Whether this matcher should be ran in "configuration" mode.
@@ -52,7 +61,13 @@ abstract class AbstractMatcher implements MatcherInterface
     public function run()
     {
         if ($this->configurationOnly and ! in_array("configuration", $this->modes)) {
-            $this->incorrectUsage();
+            $this->incorrectUsage("You can't run this matcher in the configuration mode.");
+            // @codeCoverageIgnoreStart
+        }
+        // @codeCoverageIgnoreEnd
+
+        if ( ! in_array(gettype($this->value), $this->valueType)) {
+            $this->incorrectUsage("You are trying to run this matcher with invalid data.");
             // @codeCoverageIgnoreStart
         }
         // @codeCoverageIgnoreEnd
@@ -72,21 +87,22 @@ abstract class AbstractMatcher implements MatcherInterface
      *
      * @see Essence\Matchers\AbstractMatcher::$message
      * @param string $message
+     * @param array $parameters
      * @return void
      */
-    protected function setMessage($message)
+    protected function setMessage($message, array $parameters = [])
     {
-        $this->message = $message;
+        $this->message = call_user_func_array("sprintf", array_merge([$message], $parameters);
     }
 
     /**
      * Throws a new instance of IncorrectUsageException (with the given message).
      *
-     * @param string|null $message
+     * @param string $message
      * @throws Essence\Exceptions\IncorrectUsageException
      * @return void
      */
-    protected function incorrectUsage($message = null)
+    protected function incorrectUsage($message)
     {
         throw new \Essence\Exceptions\IncorrectUsageException($message);
     }
