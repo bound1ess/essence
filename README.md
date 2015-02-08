@@ -19,7 +19,7 @@ Read the [documentation](http://bound1ess.github.io/essence).
 - equal (done)
 - above (done)
 - least
-- below
+- below (done)
 - most
 - within (done)
 - match (done)
