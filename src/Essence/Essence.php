@@ -28,7 +28,7 @@ class Essence
 
         // Don't have much to say here. A single matcher can have 1+ aliases.
         "matchers" => [
-            "Essence\Matchers\TypeMatcher"     => ["a", "an"],
+            "Essence\Matchers\TypeMatcher"     => ["a", "an", "type"],
             "Essence\Matchers\ContainMatcher"  => ["contain", "include"],
             "Essence\Matchers\PositiveMatcher" => ["ok", "fine"],
             "Essence\Matchers\TrueMatcher"     => ["true"],

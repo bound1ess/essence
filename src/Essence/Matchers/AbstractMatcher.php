@@ -60,14 +60,16 @@ abstract class AbstractMatcher implements MatcherInterface
      */
     public function run()
     {
+        $matcher = get_class($this);
+
         if ($this->configurationOnly and ! in_array("configuration", $this->modes)) {
-            $this->incorrectUsage("You can't run this matcher in the configuration mode.");
+            $this->incorrectUsage("You can't run {$matcher} in the configuration mode.");
             // @codeCoverageIgnoreStart
         }
         // @codeCoverageIgnoreEnd
 
         if ( ! in_array(gettype($this->value), $this->valueType)) {
-            $this->incorrectUsage("You are trying to run this matcher with invalid data.");
+            $this->incorrectUsage("You are trying to run {$matcher} with invalid data.");
             // @codeCoverageIgnoreStart
         }
         // @codeCoverageIgnoreEnd
