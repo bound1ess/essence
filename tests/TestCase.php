@@ -1,17 +1,14 @@
 <?php
 
-class TestCase extends PHPUnit_Framework_TestCase
+abstract class TestCase extends PHPUnit_Framework_TestCase
 {
 
     protected $subject;
 
-    protected $arguments = [];
-
     public function setUp()
     {
-        if (is_string($this->subject)) {
-            $this->subject = (new ReflectionClass($this->subject))
-                ->newInstanceArgs($this->arguments);
+        if (is_string($this->subject) and strpos($this->subject, "Matcher") === false) {
+            $this->subject = new $this->subject;
         }
     }
 

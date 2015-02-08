@@ -20,6 +20,7 @@
         },
         "files": [
             "tests/TestCase.php",
+            "tests/MatcherTestCase.php",
             "src/Essence/functions.php"
         ]
     },

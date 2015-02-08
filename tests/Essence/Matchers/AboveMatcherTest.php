@@ -1,7 +1,9 @@
 <?php namespace Essence\Matchers;
 
-class AboveMatcherTest extends \TestCase
+class AboveMatcherTest extends \MatcherTestCase
 {
+
+    protected $subject = "Essence\Matchers\AboveMatcher";
 
     /**
      * @test
@@ -14,8 +16,5 @@ class AboveMatcherTest extends \TestCase
         $this->assertNotNull($matcher->getMessage());
 
         $this->assertTrue((new AboveMatcher(15, [13], false))->run());
-
-        $this->setExpectedException("Essence\Exceptions\IncorrectUsageException");
-        (new AboveMatcher(null, [], true))->run();
     }
 }
