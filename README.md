@@ -24,7 +24,7 @@ Read the [documentation](http://bound1ess.github.io/essence).
 - within
 - match
 - keys (done)
-- values
+- values (done)
 - throw (done)
 - respond (done)
 - close

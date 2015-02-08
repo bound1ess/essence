@@ -45,7 +45,7 @@ class Essence
             "Essence\Matchers\MatchMatcher"    => ["match"],
             //"Essence\Matchers\StringMatcher"   => ["string"],
             "Essence\Matchers\KeysMatcher"     => ["keys", "key"],
-            "Essence\Matchers\ValuesMatcher"   => ["values"],
+            "Essence\Matchers\ValuesMatcher"   => ["values", "value"],
             "Essence\Matchers\ThrowMatcher"    => ["throw"],
             "Essence\Matchers\RespondMatcher"  => ["respond"],
             //"Essence\Matchers\SatisfyMatcher"  => ["satisfy"],
