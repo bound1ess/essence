@@ -4,6 +4,8 @@ abstract class AbstractMatcher implements MatcherInterface
 {
 
     /**
+     * The value we're working with, can be anything.
+     *
      * @var mixed
      */
     protected $value;
@@ -14,19 +16,30 @@ abstract class AbstractMatcher implements MatcherInterface
     protected $arguments;
 
     /**
+     * Whether this matcher should be ran in "configuration" mode.
+     *
      * @var boolean
      */
     protected $configurationOnly;
 
     /**
+     * The error message (if there were any).
+     *
      * @var string|null
      */
     protected $message;
 
     /**
+     * The modes this matcher can be ran in ("normal", "configuration").
+     *
+     * @var array
+     */
+    protected $modes = ["normal"];
+
+    /**
      * {@inheritdoc}
      */
-    public function __construct($value, array $arguments, $configurationOnly)
+    public function __construct($value, array $arguments = [], $configurationOnly = false)
     {
         $this->value = $value;
         $this->arguments = $arguments;
@@ -36,9 +49,17 @@ abstract class AbstractMatcher implements MatcherInterface
     /**
      * {@inheritdoc}
      */
-    abstract public function run();
+    public function run()
+    {
+        if ($this->configurationOnly and ! in_array("configuration", $this->modes)) {
+            $this->incorrectUsage();
+            // @codeCoverageIgnoreStart
+        }
+        // @codeCoverageIgnoreEnd
+    }
 
     /**
+     * @see Essence\Matchers\AbstractMatcher::$message
      * {@inheritdoc}
      */
     public function getMessage()
@@ -47,6 +68,9 @@ abstract class AbstractMatcher implements MatcherInterface
     }
 
     /**
+     * Sets the error message.
+     *
+     * @see Essence\Matchers\AbstractMatcher::$message
      * @param string $message
      * @return void
      */
@@ -56,11 +80,14 @@ abstract class AbstractMatcher implements MatcherInterface
     }
 
     /**
-     * @throws \Essence\Exceptions\UnintendedUsageException
+     * Throws a new instance of IncorrectUsageException (with the given message).
+     *
+     * @param string|null $message
+     * @throws Essence\Exceptions\IncorrectUsageException
      * @return void
      */
-    protected function throwUnintendedUsageException()
+    protected function incorrectUsage($message = null)
     {
-        throw new \Essence\Exceptions\UnintendedUsageException;
+        throw new \Essence\Exceptions\IncorrectUsageException($message);
     }
 }

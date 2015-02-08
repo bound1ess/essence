@@ -4,11 +4,13 @@ interface MatcherInterface
 {
 
     /**
+     * The class constructor.
+     *
      * @param mixed $value
      * @param array $arguments
      * @param boolean $configurationOnly
      */
-    public function __construct($value, array $arguments, $configurationOnly);
+    public function __construct($value, array $arguments = [], $configurationOnly = false);
 
     /**
      * Whether the given value is valid (in terms of the matcher).
@@ -18,7 +20,7 @@ interface MatcherInterface
     public function run();
 
     /**
-     * Returns the error message (if there was an error, of course) or an empty string.
+     * Returns the error message (if there was an error) or an empty string.
      *
      * @return string
      */
