@@ -17,7 +17,7 @@ class RespondMatcher extends AbstractMatcher
 
         list($method) = $this->arguments;
 
-        if ( ! method_exists($object, $method)) {
+        if ( ! method_exists($this->value, $method)) {
             $this->setMessage(
                 "RespondMatcher: the given object does not have a method called '%s'.",
                 [$method]

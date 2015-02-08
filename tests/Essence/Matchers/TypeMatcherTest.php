@@ -21,4 +21,8 @@ class TypeMatcherTest extends \MatcherTestCase
 
         $this->assertTrue((new TypeMatcher(new \stdClass, ["stdClass"]))->run());
     }
+
+    public function it_throws_an_exception_if_you_pass_wrong_value_to_the_matcher()
+    {
+    }
 }

@@ -25,7 +25,7 @@ class TypeMatcher extends AbstractMatcher
 
         list($type) = $this->arguments;
 
-        if (in_array($type, $this->types)) {
+        if (in_array($type, $this->valueType)) {
             if (gettype($this->value) == $type) {
                 return true;
             }

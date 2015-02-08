@@ -18,7 +18,10 @@ class MatchMatcher extends AbstractMatcher
         list($pattern) = $this->arguments;
 
         if ( ! preg_match($pattern, $this->value)) {
-            $this->setMessage("MatchMatcher: '%s' does not match '%s'.", [$subject, $pattern]);
+            $this->setMessage(
+                "MatchMatcher: '%s' does not match '%s'.",
+                [$this->value, $pattern]
+            );
 
             return false;
         }

@@ -10,7 +10,7 @@ class ValuesMatcherTest extends \MatcherTestCase
      */
     public function it_works_as_expected()
     {
-        $matcher = new ValuesMatcher([], 5);
+        $matcher = new ValuesMatcher([], [5]);
 
         $this->assertFalse($matcher->run());
         $this->assertNotNull($matcher->getMessage());

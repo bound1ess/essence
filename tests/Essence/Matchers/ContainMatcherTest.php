@@ -23,6 +23,6 @@ class ContainMatcherTest extends \MatcherTestCase
             return $configuration;
         });
 
-        $this->assertFalse((new ContainMatcher(null, ["foo"]))->run());
+        $this->assertFalse((new ContainMatcher([], ["foo"]))->run());
     }
 }

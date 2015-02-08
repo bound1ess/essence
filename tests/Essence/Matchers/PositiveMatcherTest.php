@@ -17,4 +17,8 @@ class PositiveMatcherTest extends \MatcherTestCase
 
         $this->assertTrue((new PositiveMatcher(1))->run());
     }
+
+    public function it_throws_an_exception_if_you_pass_wrong_value_to_the_matcher()
+    {
+    }
 }
