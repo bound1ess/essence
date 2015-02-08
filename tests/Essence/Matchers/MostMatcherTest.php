@@ -1,21 +1,20 @@
 <?php namespace Essence\Matchers;
 
-class MostMatcherTest extends \TestCase
+class MostMatcherTest extends \MatcherTestCase
 {
+
+    protected $subject = "Essence\Matchers\MostMatcher";
 
     /**
      * @test
      */
     public function it_works_as_expected()
     {
-        $matcher = new MostMatcher(20, [18], false);
+        $matcher = new MostMatcher(20, [18]);
 
         $this->assertFalse($matcher->run());
         $this->assertNotNull($matcher->getMessage());
 
-        $this->assertTrue((new MostMatcher(15, [15], false))->run());
-
-        $this->setExpectedException("Essence\Exceptions\UnintendedUsageException");
-        (new MostMatcher(null, [], true))->run();
+        $this->assertTrue((new MostMatcher(15, [15]))->run());
     }
 }

@@ -1,26 +1,26 @@
 <?php namespace Essence\Matchers;
 
-class KeysMatcherTest extends \TestCase
+class KeysMatcherTest extends \MatcherTestCase
 {
+
+    protected $subject = "Essence\Matchers\KeysMatcher";
 
     /**
      * @test
      */
     public function it_works_as_expected()
     {
-        $matcher = new KeysMatcher(["foo" => 123, "bar" => 321], [["foo", "bar"]], false);
+        $matcher = new KeysMatcher(["foo" => 123, "bar" => 321], [["foo", "baz"]]);
 
-        $this->assertTrue($matcher->run());
-        $this->assertNull($matcher->getMessage());
+        $this->assertFalse($matcher->run());
+        $this->assertNotNull($matcher->getMessage());
 
-        $this->assertFalse((new KeysMatcher((object)[], ["foo"], false))->run());
+        $this->assertFalse((new KeysMatcher(new \stdClass, ["foo"]))->run());
 
         (new KeysMatcher(["foo" => 123], [], true))->run();
+
         $this->assertEquals(essence()->getConfiguration("matcher_settings"), [
             "Essence\Matchers\ContainMatcher" => ["foo"],
         ]);
-
-        $this->setExpectedException("Essence\Exceptions\UnintendedUsageException");
-        (new KeysMatcher(null, [], false))->run();
     }
 }

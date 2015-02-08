@@ -1,7 +1,9 @@
 <?php namespace Essence\Matchers;
 
-class RespondMatcherTest extends \TestCase
+class RespondMatcherTest extends \MatcherTestCase
 {
+
+    protected $subject = "Essence\Matchers\RespondMatcher";
 
     /**
      * @test
@@ -9,14 +11,11 @@ class RespondMatcherTest extends \TestCase
     public function it_works_as_expected()
     {
         $object = new \KeysMatcherStub;
-        $matcher = new RespondMatcher($object, ["run"], false);
+        $matcher = new RespondMatcher($object, ["foo"]);
 
-        $this->assertTrue($matcher->run());
-        $this->assertNull($matcher->getMessage());
+        $this->assertFalse($matcher->run());
+        $this->assertNotNull($matcher->getMessage());
 
-        $this->assertFalse((new RespondMatcher($object, ["foo"], false))->run());
-
-        $this->setExpectedException("Essence\Exceptions\UnintendedUsageException");
-        (new RespondMatcher(null, [null], true))->run();
+        $this->assertFalse((new RespondMatcher($object, ["foo"]))->run());
     }
 }

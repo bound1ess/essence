@@ -1,21 +1,20 @@
 <?php namespace Essence\Matchers;
 
-class WithinMatcherTest extends \TestCase
+class WithinMatcherTest extends \MatcherTestCase
 {
+
+    protected $subject = "Essence\Matchers\WithinMatcher";
 
     /**
      * @test
      */
     public function it_works_as_expected()
     {
-        $matcher = new WithinMatcher(7, [5, 10], false);
+        $matcher = new WithinMatcher(7, [9, 11]);
 
-        $this->assertTrue($matcher->run());
-        $this->assertNull($matcher->getMessage());
+        $this->assertFalse($matcher->run());
+        $this->assertNotNull($matcher->getMessage());
 
-        $this->assertFalse((new WithinMatcher(10, [10, 9], false))->run());
-
-        $this->setExpectedException("Essence\Exceptions\UnintendedUsageException");
-        (new WithinMatcher(null, [], true))->run();
+        $this->assertFalse((new WithinMatcher(10, [10, 9]))->run());
     }
 }

@@ -1,22 +1,22 @@
 <?php namespace Essence\Matchers;
 
-class ValuesMatcherTest extends \TestCase
+class ValuesMatcherTest extends \MatcherTestCase
 {
+
+    protected $subject = "Essence\Matchers\ValuesMatcher";
 
     /**
      * @test
      */
     public function it_works_as_expected()
     {
-        $matcher = new ValuesMatcher([], [], true);
+        $matcher = new ValuesMatcher([], 5);
 
-        $this->assertTrue($matcher->run());
-        $this->assertNull($matcher->getMessage());
+        $this->assertFalse($matcher->run());
+        $this->assertNotNull($matcher->getMessage());
 
-        $this->assertTrue((new ValuesMatcher([1, 2, 3], [3], false))->run());
-        $this->assertFalse((new ValuesMatcher(["foo"], [["foo", "bar"]], false))->run());
+        $this->assertTrue((new ValuesMatcher([1, 2, 3], [3]))->run());
 
-        $this->setExpectedException("Essence\Exceptions\UnintendedUsageException");
-        (new ValuesMatcher(null, [], true))->run();
+        $this->assertFalse((new ValuesMatcher(["foo"], [["foo", "bar"]]))->run());
     }
 }

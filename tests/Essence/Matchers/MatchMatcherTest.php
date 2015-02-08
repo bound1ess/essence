@@ -1,21 +1,20 @@
 <?php namespace Essence\Matchers;
 
-class MatchMatcherTest extends \TestCase
+class MatchMatcherTest extends \MatcherTestCase
 {
+
+    protected $subject = "Essence\Matchers\MatchMatcher";
 
     /**
      * @test
      */
-    public function it_works_as_expected()  
+    public function it_works_as_expected()
     {
-        $matcher = new MatchMatcher("foobarbaz", ["/bar/"], false);
+        $matcher = new MatchMatcher("foo", ["/bar/"]);
 
-        $this->assertTrue($matcher->run());
-        $this->assertNull($matcher->getMessage());
+        $this->assertFalse($matcher->run());
+        $this->assertNotNull($matcher->getMessage());
 
-        $this->assertFalse((new MatchMatcher("foo", ["/bar/"], false))->run());
-
-        $this->setExpectedException("Essence\Exceptions\UnintendedUsageException");
-        (new MatchMatcher(null, [], true))->run();
+        $this->assertFalse((new MatchMatcher("bazfoobar", ["/foo/"]))->run());
     }
 }

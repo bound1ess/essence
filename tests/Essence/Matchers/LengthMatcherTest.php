@@ -1,11 +1,9 @@
 <?php namespace Essence\Matchers;
 
-class LengthMatcherTest extends \TestCase
+class LengthMatcherTest extends \MatcherTestCase
 {
 
     protected $subject = "Essence\Matchers\LengthMatcher";
-
-    protected $arguments = ["foobar", [50], false];
 
     /**
      * @test
@@ -13,29 +11,16 @@ class LengthMatcherTest extends \TestCase
     public function it_works_as_expected()
     {
         // Strings.
-        $this->assertNull($this->subject->getMessage());
-        $this->assertFalse($this->subject->run());
-        $this->assertNotNull($this->subject->getMessage());
+        $matcher = new LengthMatcher("foobar", [5]);
+
+        $this->assertFalse($matcher->run());
+        $this->assertNotNull($matcher->getMessage());
 
         // Arrays.
-        $this->assertFalse((new LengthMatcher([1, 2, 3], [10], false))->run());
+        $this->assertFalse((new LengthMatcher([1, 2, 3], [10]))->run());
 
         // Objects (keys).
         $object = (object)["foo" => 123, "bar" => 321];
-        $this->assertTrue((new LengthMatcher($object, [2], false))->run());
-
-        // Anlything else.
-        $this->setExpectedException("Essence\Exceptions\UnintendedUsageException");
-        (new LengthMatcher(null, [1], false))->run();
-    }
-
-    /**
-     * @test
-     */
-    public function it_throws_UnintendedUsage_exception()
-    {
-        $this->setExpectedException("Essence\Exceptions\UnintendedUsageException");
-
-        (new LengthMatcher(null, [], true))->run();
+        $this->assertTrue((new LengthMatcher($object, [2]))->run());
     }
 }

@@ -1,24 +1,24 @@
 <?php namespace Essence\Matchers;
 
-class TypeMatcherTest extends \TestCase
+class TypeMatcherTest extends \MatcherTestCase
 {
+
+    protected $subject = "Essence\Matchers\TypeMatcher";
 
     /**
      * @test
      */
     public function it_works_as_expected()
     {
-        $matcher = new TypeMatcher("foobar", ["string"], false);
+        $matcher = new TypeMatcher("foobar", ["array"]);
 
-        $this->assertTrue($matcher->run());
-        $this->assertNull($matcher->getMessage());
+        $this->assertFalse($matcher->run());
+        $this->assertNotNull($matcher->getMessage());
 
-        $this->assertFalse((new TypeMatcher(12.45, ["NULL"], false))->run());
+        $this->assertFalse((new TypeMatcher(12.45, ["NULL"]))->run());
 
-        $this->assertFalse((new TypeMatcher(123, ["stdClass"], false))->run());
-        $this->assertTrue((new TypeMatcher(new \stdClass, ["stdClass"], false))->run());
+        $this->assertFalse((new TypeMatcher(123, ["stdClass"]))->run());
 
-        $this->setExpectedException("Essence\Exceptions\UnintendedUsageException");
-        (new TypeMatcher(null, [null], true))->run();
+        $this->assertTrue((new TypeMatcher(new \stdClass, ["stdClass"]))->run());
     }
 }

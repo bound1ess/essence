@@ -1,23 +1,20 @@
 <?php namespace Essence\Matchers;
 
-class FalseMatcherTest extends \TestCase
+class FalseMatcherTest extends \MatcherTestCase
 {
 
     protected $subject = "Essence\Matchers\FalseMatcher";
-
-    protected $arguments = [false, [], false];
 
     /**
      * @test
      */
     public function it_works_as_expected()
     {
-        $this->assertTrue($this->subject->run());
-        $this->assertNull($this->subject->getMessage());
+        $matcher = new FalseMatcher(true);
 
-        $this->assertFalse((new FalseMatcher(true, [], false))->run());
+        $this->assertFalse($matcher->run());
+        $this->assertNotNull($matcher->getMessage());
 
-        $this->setExpectedException("Essence\Exceptions\UnintendedUsageException");
-        (new FalseMatcher("foo", [], true))->run();
+        $this->assertFalse((new FalseMatcher(true))->run());
     }
 }

@@ -1,21 +1,20 @@
 <?php namespace Essence\Matchers;
 
-class LeastMatcherTest extends \TestCase
+class LeastMatcherTest extends \MatcherTestCase
 {
+
+    protected $subject = "Essence\Matchers\LeastMatcher";
 
     /**
      * @test
      */
     public function it_works_as_expected()
     {
-        $matcher = new LeastMatcher(18, [20], false);
+        $matcher = new LeastMatcher(18, [20]);
 
         $this->assertFalse($matcher->run());
         $this->assertNotNull($matcher->getMessage());
 
-        $this->assertTrue((new LeastMatcher(15, [13], false))->run());
-
-        $this->setExpectedException("Essence\Exceptions\UnintendedUsageException");
-        (new LeastMatcher(null, [], true))->run();
+        $this->assertTrue((new LeastMatcher(15, [13])->run());
     }
 }
