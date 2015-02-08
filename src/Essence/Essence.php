@@ -2,30 +2,31 @@
 
 use Closure;
 
+/**
+ * The main class that ties everything together.
+ */
 class Essence
 {
 
     /**
+     * The Essence configuration map.
+     *
      * @var array
      */
     protected $configuration = [
+        // Will be thrown when an assertion fails.
         "exception" => "Essence\Exceptions\AssertionException",
 
+        // These don't have any special meaning, but do drastically improve the readability.
         "links" => [
             "to",
             "at",
             "of",
-            //"is",
             "have",
-            "has",
             "be",
-            //"been",
-            //"with",
-            //"that",
-            //"and",
-            //"same",
         ],
 
+        // Don't have much to say here. A single matcher can have 1+ aliases.
         "matchers" => [
             "Essence\Matchers\TypeMatcher"     => ["a", "an"],
             "Essence\Matchers\ContainMatcher"  => ["contain", "include"],
@@ -40,49 +41,53 @@ class Essence
             "Essence\Matchers\BelowMatcher"    => ["below"],
             "Essence\Matchers\MostMatcher"     => ["most"],
             "Essence\Matchers\WithinMatcher"   => ["within"],
-            //"Essence\Matchers\PropertyMatcher" => ["property"],
             "Essence\Matchers\LengthMatcher"   => ["length"],
             "Essence\Matchers\MatchMatcher"    => ["match"],
-            //"Essence\Matchers\StringMatcher"   => ["string"],
             "Essence\Matchers\KeysMatcher"     => ["keys", "key"],
             "Essence\Matchers\ValuesMatcher"   => ["values", "value"],
             "Essence\Matchers\ThrowMatcher"    => ["throw"],
             "Essence\Matchers\RespondMatcher"  => ["respond"],
-            //"Essence\Matchers\SatisfyMatcher"  => ["satisfy"],
             "Essence\Matchers\CloseMatcher"    => ["close"],
-            //"Essence\Matchers\MembersMatcher"  => ["members"],
         ],
 
+        // An interaction point between normal matchers and those ran in "configruration" mode.
         "matcher_settings" => [],
     ];
 
     /**
+     * An exact copy of $configuration.
+     *
+     * @see Essence\Essence::__construct
      * @var array
      */
     protected $defaultConfiguration;
 
     /**
-     * @var AssertionBuilder
+     * An instance of AssertionBuilder (a new one will be created for every single assertion).
+     *
+     * @var Essence\AssertionBuilder
      */
     protected $builder;
 
     /**
-     * @return Essence
+     * The class constructor.
+     *
+     * @return Essence\Essence
      */
     public function __construct()
     {
+        // Makes the configuration process simpler.
         $this->defaultConfiguration = $this->configuration;
-        //$this->builder = new AssertionBuilder($value);
     }
 
     /**
      * Throws an exception (specified in the configuration) with the given error message.
      *
-     * @param string|null $message
-     * @throws Exceptions\AssertionException|object
+     * @param string $message
+     * @throws Essence\Exceptions\AssertionException|object
      * @return void
      */
-    public function throwOnFailure($message = null)
+    public function throwOnFailure($message)
     {
         $class = $this->configuration["exception"];
 
@@ -90,10 +95,10 @@ class Essence
     }
 
     /**
-     * Returns the configuration array or a single value.
+     * Returns the entire configuration array or a single key-value pair from it.
      *
      * @param string|null $key
-     * @return array|mixed|null
+     * @return array|null|mixed
      */
     public function getConfiguration($key = null)
     {
@@ -106,9 +111,9 @@ class Essence
     }
 
     /**
-     * Allows you to configure Essence via a Closure.
+     * Configures Essence via the given Closure.
      *
-     * @throws Exceptions\InvalidConfiguraitonException
+     * @throws Essence\Exceptions\InvalidConfiguraitonException
      * @param Closure $callback
      * @return void
      */
@@ -124,7 +129,9 @@ class Essence
     /**
      * Returns the currently stored instance of AssertionBuilder.
      *
-     * @return AssertionBuilder
+     * @see Essence\Essence::$builder
+     * @see Essence\Essence::setBuilder
+     * @return Essence\AssertionBuilder
      */
     public function getBuilder()
     {
@@ -134,7 +141,9 @@ class Essence
     /**
      * Replaces the stored AssertionBuilder instance with the given one.
      *
-     * @param AssertionBuilder $builder
+     * @see Essence\Essence::$builder
+     * @see Essence\Essence::getBuilder
+     * @param Essence\AssertionBuilder $builder
      * @return void
      */
     public function setBuilder(AssertionBuilder $builder)
@@ -143,9 +152,9 @@ class Essence
     }
 
     /**
-     * Allows us to explicitly perform the validation.
+     * Explicitly performs the validation.
      *
-     * @throws Exceptions\AssertionException|object
+     * @throws Essence\Exceptions\AssertionException|object
      * @return void
      */
     public function go()
@@ -163,6 +172,8 @@ class Essence
     /**
      * Redirects all calls (to undefined methods) to the builder instance.
      *
+     * @see Essence\Essence::$builder
+     * @see Essence\Essence::__get
      * @param string $name
      * @param array $arguments
      * @return object
@@ -177,7 +188,8 @@ class Essence
     /**
      * Same, but for undefined properties.
      *
-     * @see Essence::__call
+     * @see Essence\Essence::__call
+     * @see Essence\Essence::$builder
      * @param string $name
      * @return object
      */

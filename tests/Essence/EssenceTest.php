@@ -61,8 +61,8 @@ class EssenceTest extends \TestCase
      */
     public function it_throws_an_exception_specified_by_the_configuration()
     {
-        $this->setExpectedException("Essence\Exceptions\AssertionException", null);
-        $this->subject->throwOnFailure();
+        $this->setExpectedException("Essence\Exceptions\AssertionException", "Error message.");
+        $this->subject->throwOnFailure("Error message.");
     }
 
     /**

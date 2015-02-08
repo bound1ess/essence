@@ -28,3 +28,11 @@ Read the [documentation](http://bound1ess.github.io/essence).
 - throw (done)
 - respond (done)
 - close (done)
+
+### Links
+
+- to
+- at
+- have
+- be
+- of
