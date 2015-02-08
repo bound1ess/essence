@@ -1,38 +1,52 @@
 <?php namespace Essence;
 
+/**
+ * This class helps build new assertions and validate them against given values.
+ */
 class AssertionBuilder
 {
 
+    // Fluent helps handle dynamic calls nicely.
     use \PhpPackages\Fluent\FluentTrait;
 
     /**
+     * The value we're working with, can be anything.
+     *
      * @var mixed
      */
     protected $value;
 
     /**
+     * The error message passed by a matcher (if there were any).
+     *
      * @var null|string
      */
     protected $message;
 
     /**
+     * @see Essence\Essence::$configuration
      * @var array
      */
     protected $links = [];
 
     /**
+     * @see Essence\Essence::$configuration
      * @var array
      */
     protected $matchers = [];
 
     /**
+     * Whether the validation result should be inversed.
+     *
      * @var boolean
      */
     protected $inverse = false;
 
     /**
-     * @param mixed $value
-     * @return AssertionBuilder
+     * The class constructor.
+     *
+     * @param null|mixed $value
+     * @return Essence\AssertionBuilder
      */
     public function __construct($value = null)
     {
@@ -40,8 +54,9 @@ class AssertionBuilder
     }
 
     /**
-     * Updates the list of available links.
+     * Swaps the links array with the given one.
      *
+     * @see Essence\AssertionBuilder::$links
      * @param array $links
      * @return void
      */
@@ -51,8 +66,9 @@ class AssertionBuilder
     }
 
     /**
-     * Returns the links stored.
+     * Returns the links array.
      *
+     * @see Essence\AssertionBuilder::$links
      * @return array
      */
     public function getLinks()
@@ -63,6 +79,7 @@ class AssertionBuilder
     /**
      * Updates the list of available matchers.
      *
+     * @see Essence\AssertionBuilder::$matchers
      * @param array $matchers
      * @return void
      */
@@ -72,8 +89,9 @@ class AssertionBuilder
     }
 
     /**
-     * Returns the matchers stored.
+     * Returns the matchers array.
      *
+     * @see Essence\AssertionBuilder::$matchers
      * @return array
      */
     public function getMatchers()
@@ -84,7 +102,7 @@ class AssertionBuilder
     /**
      * Performs the validation.
      *
-     * @throws Exceptions\NoMatcherFoundException
+     * @throws Essence\Exceptions\NoMatcherFoundException
      * @return boolean
      */
     public function validate()
@@ -159,8 +177,9 @@ class AssertionBuilder
     }
 
     /**
-     * Returns the error message (null if there is none).
+     * Returns the error message (or null if there is none).
      *
+     * @see Essence\AssertionBuilder::$message
      * @return string|null
      */
     public function getMessage()
@@ -169,17 +188,17 @@ class AssertionBuilder
     }
 
     /**
-     * Returns the "true" matcher's name (class name) by one of its aliases.
+     * Returns the "true" matcher name (class name) by one of its aliases.
      *
      * @param string $alias
-     * @throws Exceptions\UnknownAliasException
+     * @throws Essence\Exceptions\UnknownAliasException
      * @return string
      */
     protected function aliasToMatcher($alias)
     {
-        foreach ($this->matchers as $matcher => $aliases) {
+        foreach ($this->matchers as $class => $aliases) {
             if (in_array($alias, $aliases)) {
-                return $matcher;
+                return $class;
             }
         }
 
