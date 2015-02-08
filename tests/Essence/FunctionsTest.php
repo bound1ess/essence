@@ -6,24 +6,11 @@ class FunctionsTest extends TestCase
     /**
      * @test
      */
-    public function it_returns_the_same_instance_of_Container()
-    {
-        $this->assertInstanceOf(
-            "PhpPackages\Container\Container",
-            $container = essence_get_container()
-        );
-
-        $this->assertSame($container, essence_get_container());
-    }
-
-    /**
-     * @test
-     */
     public function it_returns_the_same_instance_of_Essence()
     {
-        $this->assertInstanceOf("Essence\Essence", $essence = essence(null));
+        $this->assertInstanceOf("Essence\Essence", $essence = essence());
 
-        $this->assertSame($essence, essence(null));
+        $this->assertSame($essence, essence());
     }
 
     /**
