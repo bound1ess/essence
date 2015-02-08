@@ -12,6 +12,11 @@ class ContainMatcher extends AbstractMatcher
 
         if (array_key_exists(__CLASS__, $configuration)) {
             $this->value = $configuration[__CLASS__];
+
+            unset($configuration[__CLASS__]);
+            essence()->configure(function() use ($configuration) {
+                return $configuration;
+            });
         }
 
         $element = end($this->arguments);
