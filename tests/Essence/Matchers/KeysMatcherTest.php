@@ -15,7 +15,7 @@ class KeysMatcherTest extends \MatcherTestCase
         $this->assertFalse($matcher->run());
         $this->assertNotNull($matcher->getMessage());
 
-        $this->assertFalse((new KeysMatcher(new \stdClass, ["foo"]))->run());
+        $this->assertTrue((new KeysMatcher((object)["foo" => "bar"], ["foo"]))->run());
 
         (new KeysMatcher(["foo" => 123], [], true))->run();
 

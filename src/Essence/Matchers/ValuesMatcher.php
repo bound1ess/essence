@@ -11,6 +11,11 @@ class ValuesMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+    protected $modes = ["configuration", "normal"];
+
+    /**
+     * {@inheritdoc}
+     */
     public function run()
     {
         parent::run();

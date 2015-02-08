@@ -15,7 +15,7 @@ class TypeMatcherTest extends \MatcherTestCase
         $this->assertFalse($matcher->run());
         $this->assertNotNull($matcher->getMessage());
 
-        $this->assertFalse((new TypeMatcher(12.45, ["NULL"]))->run());
+        $this->assertTrue((new TypeMatcher(12.45, ["double"]))->run());
 
         $this->assertFalse((new TypeMatcher(123, ["stdClass"]))->run());
 

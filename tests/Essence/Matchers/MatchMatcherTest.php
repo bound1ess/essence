@@ -15,6 +15,6 @@ class MatchMatcherTest extends \MatcherTestCase
         $this->assertFalse($matcher->run());
         $this->assertNotNull($matcher->getMessage());
 
-        $this->assertFalse((new MatchMatcher("bazfoobar", ["/foo123/"]))->run());
+        $this->assertTrue((new MatchMatcher("bazfoobar", ["/foo/"]))->run());
     }
 }

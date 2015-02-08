@@ -18,5 +18,7 @@ class ValuesMatcherTest extends \MatcherTestCase
         $this->assertTrue((new ValuesMatcher([1, 2, 3], [3]))->run());
 
         $this->assertFalse((new ValuesMatcher(["foo"], [["foo", "bar"]]))->run());
+
+        $this->assertTrue((new ValuesMatcher([], [], true))->run());
     }
 }

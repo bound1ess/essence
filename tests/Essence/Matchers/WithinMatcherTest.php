@@ -15,6 +15,6 @@ class WithinMatcherTest extends \MatcherTestCase
         $this->assertFalse($matcher->run());
         $this->assertNotNull($matcher->getMessage());
 
-        $this->assertFalse((new WithinMatcher(10, [10, 9]))->run());
+        $this->assertTrue((new WithinMatcher(10, [9, 11]))->run());
     }
 }

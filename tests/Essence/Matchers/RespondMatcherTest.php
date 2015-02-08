@@ -16,6 +16,6 @@ class RespondMatcherTest extends \MatcherTestCase
         $this->assertFalse($matcher->run());
         $this->assertNotNull($matcher->getMessage());
 
-        $this->assertFalse((new RespondMatcher($object, ["foo"]))->run());
+        $this->assertTrue((new RespondMatcher($object, ["run"]))->run());
     }
 }
