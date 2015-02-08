@@ -50,7 +50,7 @@ class Essence
             "Essence\Matchers\RespondMatcher"  => ["respond"],
             //"Essence\Matchers\SatisfyMatcher"  => ["satisfy"],
             "Essence\Matchers\CloseMatcher"    => ["close"],
-            "Essence\Matchers\MembersMatcher"  => ["members"],
+            //"Essence\Matchers\MembersMatcher"  => ["members"],
         ],
 
         "matcher_settings" => [],

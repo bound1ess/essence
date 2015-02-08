@@ -22,10 +22,9 @@ Read the [documentation](http://bound1ess.github.io/essence).
 - below
 - most
 - within
-- match
+- match (done)
 - keys (done)
 - values (done)
 - throw (done)
 - respond (done)
 - close
-- members
