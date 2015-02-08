@@ -16,7 +16,7 @@ class NullMatcher extends AbstractMatcher
 
         if ( ! is_null($this->value)) {
             $this->setMessage(sprintf(
-                "NullMatcher: type NULL (expected) !== %s (actual)",
+                "NullMatcher: type NULL (expected) !== %s (actual).",
                 gettype($this->value)
             ));
 

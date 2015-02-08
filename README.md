@@ -16,7 +16,7 @@ Read the [documentation](http://bound1ess.github.io/essence).
 - false (done)
 - null (done)
 - empty (done)
-- equal
+- equal (done)
 - above
 - least
 - below

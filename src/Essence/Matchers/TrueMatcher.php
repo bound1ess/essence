@@ -15,7 +15,7 @@ class TrueMatcher extends AbstractMatcher
         // @codeCoverageIgnoreEnd
 
         if ($this->value !== true) {
-            $this->setMessage("TrueMatcher: true (expected) !== false (actual)");
+            $this->setMessage("TrueMatcher: true (expected) !== false (actual).");
 
             return false;
         }

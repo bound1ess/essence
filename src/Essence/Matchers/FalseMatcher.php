@@ -15,7 +15,7 @@ class FalseMatcher extends AbstractMatcher
         // @codeCoverageIgnoreEnd
 
         if ($this->value !== false) {
-            $this->setMessage("FalseMatcher: false (expected) !== true (actual)");
+            $this->setMessage("FalseMatcher: false (expected) !== true (actual).");
 
             return false;
         }
