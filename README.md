@@ -27,4 +27,4 @@ Read the [documentation](http://bound1ess.github.io/essence).
 - values (done)
 - throw (done)
 - respond (done)
-- close
+- close (done)
