@@ -21,7 +21,7 @@ Read the [documentation](http://bound1ess.github.io/essence).
 - least
 - below
 - most
-- within
+- within (done)
 - match (done)
 - keys (done)
 - values (done)
