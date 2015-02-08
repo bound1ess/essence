@@ -13,5 +13,17 @@ class LeastMatcher extends AbstractMatcher
             // @codeCoverageIgnoreStart
         }
         // @codeCoverageIgnoreEnd
+
+        if ($this->value >= ($number = end($this->arguments))) {
+            return true;
+        }
+
+        $this->setMessage(sprintf(
+            "LeastMatcher: %s is not equal to %s, or greater.",
+            $this->value,
+            $number
+        ));
+
+        return false;
     }
 }

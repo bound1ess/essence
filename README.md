@@ -18,9 +18,9 @@ Read the [documentation](http://bound1ess.github.io/essence).
 - empty (done)
 - equal (done)
 - above (done)
-- least
+- least (done)
 - below (done)
-- most
+- most (done)
 - within (done)
 - match (done)
 - keys (done)
