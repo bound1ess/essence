@@ -9,7 +9,7 @@ Read the [documentation](http://bound1ess.github.io/essence).
 ### Matchers
 
 - length (done)
-- type
+- type (done)
 - contain (done)
 - positive (done)
 - true (done)
