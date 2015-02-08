@@ -15,7 +15,7 @@ class AboveMatcherTest extends \TestCase
 
         $this->assertTrue((new AboveMatcher(15, [13], false))->run());
 
-        $this->setExpectedException("Essence\Exceptions\UnintendedUsageException");
+        $this->setExpectedException("Essence\Exceptions\IncorrectUsageException");
         (new AboveMatcher(null, [], true))->run();
     }
 }
