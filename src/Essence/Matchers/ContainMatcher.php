@@ -15,15 +15,8 @@ class ContainMatcher extends AbstractMatcher
     {
         parent::run();
 
-        $configuration = essence()->getConfiguration("matcher_settings");
-
-        if (array_key_exists(__CLASS__, $configuration)) {
-            $this->value = $configuration[__CLASS__];
-
-            unset($configuration[__CLASS__]);
-            essence()->configure(function() use ($configuration) {
-                return $configuration;
-            });
+        if ( ! is_null($configuration = essence()->getMatcherConfiguration(__CLASS__))) {
+            $this->value = $configuration;
         }
 
         list($element) = $this->arguments;

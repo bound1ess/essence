@@ -27,11 +27,7 @@ class KeysMatcher extends AbstractMatcher
         }
 
         if ($this->configurationOnly) {
-            essence()->configure(function($configuration) use ($keys) {
-                $configuration["matcher_settings"]["Essence\Matchers\ContainMatcher"] = $keys;
-
-                return $configuration;
-            });
+            essence()->setMatcherConfiguration("Essence\Matchers\ContainMatcher", $keys);
 
             return true;
         }

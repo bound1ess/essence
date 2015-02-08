@@ -111,6 +111,37 @@ class Essence
     }
 
     /**
+     * Returns the configuration for the given matcher, or null.
+     *
+     * @param string $matcherClass
+     * @return array|null
+     */
+    public function getMatcherConfiguration($matcherClass)
+    {
+        if ( ! array_key_exists($matcherClass, $this->configuration["matcher_settings"])) {
+            return null;
+        }
+
+        $configuration = $this->configuration["matcher_settings"][$matcherClass];
+
+        unset($this->configuration["matcher_settings"][$matcherClass]);
+
+        return $configuration;
+    }
+
+    /**
+     * Sets the matcher configuration.
+     *
+     * @param string $matcherClass
+     * @param array $value
+     * @return void
+     */
+    public function setMatcherConfiguration($matcherClass, array $value)
+    {
+        $this->configuration["matcher_settings"][$matcherClass] = $value;
+    }
+
+    /**
      * Configures Essence via the given Closure.
      *
      * @throws Essence\Exceptions\InvalidConfiguraitonException
