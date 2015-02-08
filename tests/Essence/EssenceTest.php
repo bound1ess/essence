@@ -85,13 +85,15 @@ class EssenceTest extends \TestCase
     {
         $builder = $this->mockAssertionBuilder();
 
-        $builder->shouldReceive("validate")->once()->andReturn(false);
+        $builder->shouldReceive("validate")->twice()->andReturn(true, false);
         $builder->shouldReceive("getMessage")->once()->andReturn("foobar");
-        $builder->shouldReceive("setLinks")->once();
-        $builder->shouldReceive("setMatchers")->once();
+        $builder->shouldReceive("setLinks")->twice();
+        $builder->shouldReceive("setMatchers")->twice();
 
         $this->subject->setBuilder($builder);
         $this->assertInstanceOf("Essence\AssertionBuilder", $this->subject->getBuilder());
+
+        $this->assertTrue($this->subject->go());
 
         $this->setExpectedException("Essence\Exceptions\AssertionException", "foobar");
         $this->subject->go();

@@ -155,7 +155,7 @@ class Essence
      * Explicitly performs the validation.
      *
      * @throws Essence\Exceptions\AssertionException|object
-     * @return void
+     * @return boolean
      */
     public function go()
     {
@@ -166,8 +166,10 @@ class Essence
             $this->throwOnFailure($this->builder->getMessage());
             // @codeCoverageIgnoreStart
         }
+        // @codeCoverageIgnoreEnd
+
+        return true;
     }
-    // @codeCoverageIgnoreEnd
 
     /**
      * Redirects all calls (to undefined methods) to the builder instance.
