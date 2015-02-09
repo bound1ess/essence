@@ -1,5 +1,8 @@
 <?php namespace Essence\Matchers;
 
+/**
+ * Provides a lot of reusable code. Every single Essence matcher must inherit this class.
+ */
 abstract class AbstractMatcher implements MatcherInterface
 {
 

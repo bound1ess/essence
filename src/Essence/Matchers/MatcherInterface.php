@@ -1,5 +1,8 @@
 <?php namespace Essence\Matchers;
 
+/**
+ * Every single Essence matcher must implement this interface (AbstractMatcher does).
+ */
 interface MatcherInterface
 {
 
