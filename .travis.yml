@@ -7,8 +7,7 @@ php:
     - hhvm
 
 before_script:
-    - composer install --prefer-source --no-dev --no-interaction
-    - composer dump-autoload --no-dev
+    - composer install --prefer-source --dev --no-interaction
 
 script: vendor/bin/phpunit
 

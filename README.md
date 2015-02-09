@@ -1,4 +1,4 @@
-# Essence
+# Essence [![Build Status](https://travis-ci.org/bound1ess/essence.svg?branch=master)](https://travis-ci.org/bound1ess/essence)
 
 Read the [documentation](http://bound1ess.github.io/essence).
 
