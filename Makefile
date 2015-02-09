@@ -1,3 +1,7 @@
+PORT=8000
+
 run-tests: ; vendor/bin/phpunit
-build-code-coverage-report: ; vendor/bin/phpunit --coverage-html=coverage/
-boot-code-coverage-report-server: ; php -S localhost:8000 -t coverage/
+build-docs: ; apigen generate --source=src/ --destination=docs/
+docs-server: ; php -S localhost:$(PORT) -t docs/
+coverage-report: ; vendor/bin/phpunit --coverage-html=coverage/
+coverage-report-server: ; php -S localhost:$(PORT) -t coverage/
