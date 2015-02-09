@@ -1,5 +1,8 @@
 <?php namespace Essence\Matchers;
 
+/**
+ * B <= A <= C.
+ */
 class WithinMatcher extends AbstractMatcher
 {
 

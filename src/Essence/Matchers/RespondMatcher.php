@@ -1,5 +1,8 @@
 <?php namespace Essence\Matchers;
 
+/**
+ * Checks if A has a method called B.
+ */
 class RespondMatcher extends AbstractMatcher
 {
 

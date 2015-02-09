@@ -1,5 +1,8 @@
 <?php namespace Essence\Matchers;
 
+/**
+ * Works with arrays (count), strings (strlen) and objects (get_object_vars into count).
+ */
 class LengthMatcher extends AbstractMatcher
 {
 

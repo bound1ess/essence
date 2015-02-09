@@ -1,5 +1,8 @@
 <?php namespace Essence\Matchers;
 
+/**
+ * A >= B.
+ */
 class LeastMatcher extends AbstractMatcher
 {
 

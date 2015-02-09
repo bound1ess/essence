@@ -1,5 +1,8 @@
 <?php namespace Essence\Matchers;
 
+/**
+ * Depending on the output of empty() built-in.
+ */
 class EmptyMatcher extends AbstractMatcher
 {
 

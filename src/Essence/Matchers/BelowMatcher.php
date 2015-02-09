@@ -1,5 +1,8 @@
 <?php namespace Essence\Matchers;
 
+/**
+ * A < B.
+ */
 class BelowMatcher extends AbstractMatcher
 {
 

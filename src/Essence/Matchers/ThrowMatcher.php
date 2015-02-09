@@ -1,5 +1,8 @@
 <?php namespace Essence\Matchers;
 
+/**
+ * Checks if A (a callable) throws an exception of class B.
+ */
 class ThrowMatcher extends AbstractMatcher
 {
 

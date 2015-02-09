@@ -1,5 +1,8 @@
 <?php namespace Essence\Matchers;
 
+/**
+ * Approximate equality.
+ */
 class CloseMatcher extends AbstractMatcher
 {
 

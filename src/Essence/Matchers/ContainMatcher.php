@@ -1,5 +1,8 @@
 <?php namespace Essence\Matchers;
 
+/**
+ * Whether a string/array contains an element.
+ */
 class ContainMatcher extends AbstractMatcher
 {
 

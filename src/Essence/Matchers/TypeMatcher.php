@@ -1,5 +1,8 @@
 <?php namespace Essence\Matchers;
 
+/**
+ * Checks if A is of type B.
+ */
 class TypeMatcher extends AbstractMatcher
 {
 

@@ -1,5 +1,8 @@
 <?php namespace Essence\Matchers;
 
+/**
+ * A === TRUE (strict).
+ */
 class TrueMatcher extends AbstractMatcher
 {
 
@@ -16,7 +19,7 @@ class TrueMatcher extends AbstractMatcher
         parent::run();
 
         if ($this->value !== true) {
-            $this->setMessage("TrueMatcher: true (expected) !== false (actual).");
+            $this->setMessage("TrueMatcher: TRUE (expected) !== FALSE (actual).");
 
             return false;
         }

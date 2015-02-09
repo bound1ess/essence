@@ -1,5 +1,8 @@
 <?php namespace Essence\Matchers;
 
+/**
+ * Checks if A has value(s) stored in B.
+ */
 class ValuesMatcher extends AbstractMatcher
 {
 

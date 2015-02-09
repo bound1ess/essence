@@ -1,5 +1,8 @@
 <?php namespace Essence\Matchers;
 
+/**
+ * Based on is_null() built-in function.
+ */
 class NullMatcher extends AbstractMatcher
 {
 

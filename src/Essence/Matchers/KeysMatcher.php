@@ -1,5 +1,8 @@
 <?php namespace Essence\Matchers;
 
+/**
+ * Works both in normal AND configuration modes.
+ */
 class KeysMatcher extends AbstractMatcher
 {
 

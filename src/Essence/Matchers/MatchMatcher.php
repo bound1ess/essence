@@ -1,5 +1,8 @@
 <?php namespace Essence\Matchers;
 
+/**
+ * !! preg_match(B, A).
+ */
 class MatchMatcher extends AbstractMatcher
 {
 

@@ -1,5 +1,8 @@
 <?php namespace Essence\Matchers;
 
+/**
+ * A === B (strict check).
+ */
 class EqualMatcher extends AbstractMatcher
 {
 
