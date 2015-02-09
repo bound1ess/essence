@@ -3,8 +3,17 @@
     "description":
     "Highly opinionated PHP assertion framework providing clean and flexible BDD style API.",
     "license": "MIT",
+    "keywords": ["BDD", "testing", "assertion", "framework"],
+    "authors": [
+        {
+            "name": "bound1ess",
+            "email": "bound1ess.dev@gmail.com",
+            "role": "developer"
+        }
+    ],
 
     "require": {
+        "php": ">=5.4.0",
         "php-packages/container": "~1",
         "php-packages/fluent": "~1"
     },
