@@ -19,13 +19,15 @@
             "Essence\\": "src/Essence/"
         },
         "files": [
-            "tests/TestCase.php",
-            "tests/MatcherTestCase.php",
             "src/Essence/functions.php"
         ]
     },
 
     "autoload-dev": {
-        "classmap": ["stubs/"]
+        "classmap": ["stubs/"],
+        "files": [
+            "tests/TestCase.php",
+            "tests/MatcherTestCase.php"
+        ]
     }
 }
