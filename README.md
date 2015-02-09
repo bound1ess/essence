@@ -2,37 +2,30 @@
 
 Read the [documentation](http://bound1ess.github.io/essence).
 
-## Checklist
+## License
 
-...
+The MIT License (MIT).
 
-### Matchers
+## Development
 
-- length (done)
-- type (done)
-- contain (done)
-- positive (done)
-- true (done)
-- false (done)
-- null (done)
-- empty (done)
-- equal (done)
-- above (done)
-- least (done)
-- below (done)
-- most (done)
-- within (done)
-- match (done)
-- keys (done)
-- values (done)
-- throw (done)
-- respond (done)
-- close (done)
+The `Makefile` contains all sorts of useful tasks.
 
-### Links
+### Running tests
 
-- to
-- at
-- have
-- be
-- of
+```shell
+make run-tests
+```
+
+### Creating code coverage report
+
+```shell
+make coverage-report
+make coverage-report-server
+```
+
+### Building documentation
+
+```shell
+make build-docs
+make docs-server
+```
