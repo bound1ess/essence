@@ -1,5 +1,5 @@
 <?php namespace Essence\Exceptions;
 
-class UnknownAliasException extends \Exception
+class UnknownAliasException extends BaseException
 {
 }

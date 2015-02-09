@@ -1,5 +1,5 @@
 <?php namespace Essence\Exceptions;
 
-class IncorrectUsageException extends \Exception
+class IncorrectUsageException extends BaseException
 {
 }

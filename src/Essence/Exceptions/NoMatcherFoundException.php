@@ -1,5 +1,5 @@
 <?php namespace Essence\Exceptions;
 
-class NoMatcherFoundException extends \Exception
+class NoMatcherFoundException extends BaseException
 {
 }

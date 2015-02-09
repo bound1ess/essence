@@ -1,5 +1,5 @@
 <?php namespace Essence\Exceptions;
 
-class AssertionException extends \Exception
+class AssertionException extends BaseException
 {
 }
