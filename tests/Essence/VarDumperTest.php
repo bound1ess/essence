@@ -51,4 +51,12 @@ class VarDumperTest extends \TestCase
         $this->assertEquals($this->subject->dump(true), "true");
         $this->assertEquals($this->subject->dump(false), "false");
     }
+
+    /**
+     * @test
+     */
+    public function it_prints_null()
+    {
+        $this->assertEquals($this->subject->dump(null), "null");
+    }
 }
