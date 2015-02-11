@@ -33,7 +33,7 @@ class EqualMatcher extends AbstractMatcher
         }
 
         $this->setMessage(
-            "EqualMatcher: the given value of type %s !== the given %s.",
+            "EqualMatcher: %s !== %s.",
             [gettype($this->value), gettype($anotherValue)]
         );
 
