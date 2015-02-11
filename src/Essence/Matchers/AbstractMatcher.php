@@ -49,6 +49,13 @@ abstract class AbstractMatcher implements MatcherInterface
     protected $modes = ["normal"];
 
     /**
+     * An instance of VarDumper.
+     *
+     * @var Essence\VarDumper
+     */
+    protected $dumper;
+
+    /**
      * {@inheritdoc}
      */
     public function __construct($value, array $arguments = [], $configurationOnly = false)
@@ -56,6 +63,9 @@ abstract class AbstractMatcher implements MatcherInterface
         $this->value = $value;
         $this->arguments = $arguments;
         $this->configurationOnly = $configurationOnly;
+
+        // @todo Do it the right way.
+        $this->dumper = new \Essence\VarDumper;
     }
 
     /**
@@ -110,5 +120,15 @@ abstract class AbstractMatcher implements MatcherInterface
     protected function incorrectUsage($message)
     {
         throw new \Essence\Exceptions\IncorrectUsageException($message);
+    }
+
+    /**
+     * Returns a VarDumper instance.
+     *
+     * @return Essence\VarDumper
+     */
+    protected function getDumper()
+    {
+        return $this->dumper;
     }
 }
