@@ -27,6 +27,8 @@ class VarDumper
                 return $value;
 
             case "integer": return (string)$value;
+
+            case "double": return (string)$value;
         }
     }
 }

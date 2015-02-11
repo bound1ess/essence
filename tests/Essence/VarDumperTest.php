@@ -32,4 +32,14 @@ class VarDumperTest extends \TestCase
         $this->assertEquals($this->subject->dump(14896), "14896");
         $this->assertEquals($this->subject->dump(-1490), "-1490");
     }
+
+    /**
+     * @test
+     */
+    public function it_prints_a_float()
+    {
+        $this->assertEquals($this->subject->dump(41.4151515), "41.4151515");
+        $this->assertEquals($this->subject->dump(-0.879), "-0.879");
+        $this->assertEquals($this->subject->dump(2e6), "2e6");
+    }
 }
