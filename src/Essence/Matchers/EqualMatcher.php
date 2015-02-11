@@ -34,7 +34,7 @@ class EqualMatcher extends AbstractMatcher
 
         $this->setMessage(
             "EqualMatcher: %s !== %s.",
-            [gettype($this->value), gettype($anotherValue)]
+            [$this->value, $anotherValue]
         );
 
         return false;

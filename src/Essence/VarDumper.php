@@ -24,7 +24,7 @@ class VarDumper
                     $value = substr($value, 0, 30)."...";
                 }
 
-                return $value;
+                return "'{$value}'";
 
             case "integer": return (string)$value;
 
