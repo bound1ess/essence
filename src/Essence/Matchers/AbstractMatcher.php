@@ -107,6 +107,8 @@ abstract class AbstractMatcher implements MatcherInterface
      */
     protected function setMessage($message, array $parameters = [])
     {
+        $parameters = array_map([$this->getDumper(), "dump"], $parameters);
+
         $this->message = call_user_func_array("sprintf", array_merge([$message], $parameters));
     }
 
