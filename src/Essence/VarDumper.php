@@ -29,6 +29,8 @@ class VarDumper
             case "integer": return (string)$value;
 
             case "double": return (string)$value;
+
+            case "boolean": return $value ? "true" : "false";
         }
     }
 }

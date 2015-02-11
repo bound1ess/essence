@@ -42,4 +42,13 @@ class VarDumperTest extends \TestCase
         $this->assertEquals($this->subject->dump(-0.879), "-0.879");
         $this->assertEquals($this->subject->dump(2e6), "2e6");
     }
+
+    /**
+     * @test
+     */
+    public function it_prints_a_boolean()
+    {
+        $this->assertEquals($this->subject->dump(true), "true");
+        $this->assertEquals($this->subject->dump(false), "false");
+    }
 }
