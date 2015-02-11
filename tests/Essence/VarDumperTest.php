@@ -23,4 +23,13 @@ class VarDumperTest extends \TestCase
             "foobar\\n".str_repeat("a", 22)."..."
         );
     }
+
+    /**
+     * @test
+     */
+    public function it_prints_an_integer()
+    {
+        $this->assertEquals($this->subject->dump(14896), "14896");
+        $this->assertEquals($this->subject->dump(-1490), "-1490");
+    }
 }

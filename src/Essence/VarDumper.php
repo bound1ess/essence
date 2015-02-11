@@ -14,13 +14,19 @@ class VarDumper
      */
     public function dump($value)
     {
-        $value = str_replace(PHP_EOL, "\\n", $value);
+        switch (gettype($value)) {
 
-        // @suggestion multibyte support?
-        if (strlen($value) > 30) {
-            $value = substr($value, 0, 30)."...";
+            case "string":
+                $value = str_replace(PHP_EOL, "\\n", $value);
+
+                // @suggestion multibyte support?
+                if (strlen($value) > 30) {
+                    $value = substr($value, 0, 30)."...";
+                }
+
+                return $value;
+
+            case "integer": return (string)$value;
         }
-
-        return $value;
     }
 }
