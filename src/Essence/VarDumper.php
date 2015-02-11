@@ -33,6 +33,14 @@ class VarDumper
             case "boolean": return $value ? "true" : "false";
 
             case "NULL": return "null";
+
+            case "object":
+                return sprintf("%s(#%s)", get_class($value), spl_object_hash($value));
+
+            case "array": return sprintf("array[%s]", count($value));
+
+            // @codeCoverageIgnoreStart
         }
     }
+    // @codeCoverageIgnoreEnd
 }

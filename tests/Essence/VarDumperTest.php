@@ -59,4 +59,26 @@ class VarDumperTest extends \TestCase
     {
         $this->assertEquals($this->subject->dump(null), "null");
     }
+
+    /**
+     * @test
+     */
+    public function it_prints_an_array()
+    {
+        $this->assertEquals($this->subject->dump([]), "array[0]");
+        $this->assertEquals($this->subject->dump([1, 2, 3]), "array[3]");
+    }
+
+    /**
+     * @test
+     */
+    public function it_prints_an_object()
+    {
+        $object = new \stdClass;
+
+        $this->assertEquals(
+            $this->subject->dump($object),
+            sprintf("stdClass(#%s)", spl_object_hash($object))
+        );
+    }
 }
