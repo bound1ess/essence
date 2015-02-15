@@ -194,6 +194,17 @@ class Essence
     }
 
     /**
+     * Tells Essence whether you want to use this feature, or not.
+     *
+     * @param boolean $flag
+     * @return void
+     */
+    public function implicitValidation($flag)
+    {
+        $this->configuration["implicit_validation"] = (boolean) $flag;
+    }
+
+    /**
      * Returns the currently stored instance of AssertionBuilder.
      *
      * @see Essence\Essence::$builder
