@@ -235,6 +235,17 @@ class Essence
     }
 
     /**
+     * Alias of Essence\Essence::go().
+     *
+     * @see Essence\Essence::go
+     * @return void
+     */
+    public function validate()
+    {
+        $this->go();
+    }
+
+    /**
      * Redirects all calls (to undefined methods) to the builder instance.
      *
      * @see Essence\Essence::$builder
