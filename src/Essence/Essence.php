@@ -73,6 +73,14 @@ class Essence
     protected $builder;
 
     /**
+     * A reference to every builder set via setBuilder() method will also be stored here.
+     *
+     * @see Essence\Essence::setBuilder
+     * @var array
+     */
+    protected $builders = [];
+
+    /**
      * The class constructor.
      *
      * @return Essence\Essence
@@ -211,6 +219,7 @@ class Essence
             $this->builder->go();
         }
 
+        $this->builders[] = $builder;
         $this->builder = $builder;
     }
 
@@ -243,6 +252,25 @@ class Essence
     public function validate()
     {
         return $this->go();
+    }
+
+    /**
+     * Runs validate() on every single AssertionBuilder (via go()) stored in $builders.
+     *
+     * @see Essence\Essence::$builders
+     * @see Essence\Essence::go
+     * @return void
+     */
+    public function validateAll()
+    {
+        $currentBuilder = $this->builder;
+
+        foreach ($this->builders as $builder) {
+            $this->builder = $builder;
+            $this->go();
+        }
+
+        $this->builder = $currentBuilder;
     }
 
     /**
