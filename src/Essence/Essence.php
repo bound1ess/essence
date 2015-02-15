@@ -17,6 +17,9 @@ class Essence
         // Will be thrown when an assertion fails.
         "exception" => "Essence\Exceptions\AssertionException",
 
+        // When a new assertion was created, validate the previous one.
+        "implicit_validation" => true,
+
         // These don't have any special meaning, but do drastically improve the readability.
         "links" => [
             "to",
@@ -179,6 +182,10 @@ class Essence
      */
     public function setBuilder(AssertionBuilder $builder)
     {
+        if ( ! is_null($this->builder) and $this->configuration["implicit_validation"]) {
+            $this->builder->go();
+        }
+
         $this->builder = $builder;
     }
 
