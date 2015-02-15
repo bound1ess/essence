@@ -30,6 +30,21 @@ class EssenceTest extends \TestCase
     /**
      * @test
      */
+    public function it_provides_nice_helper_methods_for_configuring_Essence()
+    {
+        $this->subject->addLink("foo");
+        $this->subject->addMatcher("bar", ["baz"]);
+
+        $configuration = $this->subject->getConfiguration();
+
+        $this->assertContains("foo", $configuration["links"]);
+        $this->assertArrayHasKey("bar", $configuration["matchers"]);
+        $this->assertEquals(["baz"], $configuration["matchers"]["bar"]);
+    }
+
+    /**
+     * @test
+     */
     public function it_will_override_the_configuration_with_default_values_if_you_mess_up()
     {
         $key = array_keys($configuration = $this->subject->getConfiguration())[0];
