@@ -216,7 +216,7 @@ class Essence
     public function setBuilder(AssertionBuilder $builder)
     {
         if ( ! is_null($this->builder) and $this->configuration["implicit_validation"]) {
-            $this->builder->go();
+            $this->go();
         }
 
         $this->builders[] = $builder;
@@ -263,14 +263,10 @@ class Essence
      */
     public function validateAll()
     {
-        $currentBuilder = $this->builder;
-
         foreach ($this->builders as $builder) {
             $this->builder = $builder;
             $this->go();
         }
-
-        $this->builder = $currentBuilder;
     }
 
     /**
