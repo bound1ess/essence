@@ -17,12 +17,8 @@ class ContainMatcherTest extends \MatcherTestCase
 
         $this->assertTrue((new ContainMatcher("foobar", ["foo"]))->run());
 
-        essence()->configure(function($configuration) {
-            $configuration["matcher_settings"]["Essence\Matchers\ContainMatcher"] = [];
+        essence()->setMatcherConfiguration($this->subject, ["foo"]);
 
-            return $configuration;
-        });
-
-        $this->assertFalse((new ContainMatcher([], ["foo"]))->run());
+        $this->assertTrue((new ContainMatcher([], ["foo"]))->run());
     }
 }

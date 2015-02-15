@@ -18,10 +18,6 @@ class ContainMatcher extends AbstractMatcher
     {
         parent::run();
 
-        if ( ! is_null($configuration = essence()->getMatcherConfiguration(__CLASS__))) {
-            $this->value = $configuration;
-        }
-
         list($element) = $this->arguments;
         $result = true;
 

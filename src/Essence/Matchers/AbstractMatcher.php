@@ -86,6 +86,10 @@ abstract class AbstractMatcher implements MatcherInterface
             // @codeCoverageIgnoreStart
         }
         // @codeCoverageIgnoreEnd
+
+        if ( ! is_null($configuration = essence()->getMatcherConfiguration($matcher))) {
+            $this->value = $configuration;
+        }
     }
 
     /**
