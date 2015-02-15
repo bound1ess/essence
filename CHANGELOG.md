@@ -2,7 +2,11 @@
 
 ## Upcoming
 
-...
+### 1.3.0
+
+This release will be dedicated to providing more readable and informative error messages.
+- handle `not` keyword properly (show full error message)
+- when doing some sort of comparison, show *diff* (difference between the two values)
 
 ## Changes
 
