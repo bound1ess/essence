@@ -80,6 +80,6 @@ if ( ! function_exists("expect")) {
      */
     function expect($value)
     {
-        return $value;
+        return ($value instanceof Essence\Essence) ? $value : essence($value);
     }
 }
