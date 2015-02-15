@@ -40,6 +40,9 @@ class EssenceTest extends \TestCase
         $this->assertContains("foo", $configuration["links"]);
         $this->assertArrayHasKey("bar", $configuration["matchers"]);
         $this->assertEquals(["baz"], $configuration["matchers"]["bar"]);
+
+        $this->subject->implicitValidation(false);
+        $this->assertSame(false, $this->subject->getConfiguration("implicit_validation"));
     }
 
     /**
