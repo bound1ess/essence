@@ -108,7 +108,7 @@ class EssenceTest extends \TestCase
         $this->subject->setBuilder($builder);
         $this->assertInstanceOf("Essence\AssertionBuilder", $this->subject->getBuilder());
 
-        $this->assertTrue($this->subject->go());
+        $this->assertTrue($this->subject->validate());
 
         $this->setExpectedException("Essence\Exceptions\AssertionException", "foobar");
         $this->subject->go();

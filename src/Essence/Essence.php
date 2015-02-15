@@ -238,11 +238,11 @@ class Essence
      * Alias of Essence\Essence::go().
      *
      * @see Essence\Essence::go
-     * @return void
+     * @return boolean
      */
     public function validate()
     {
-        $this->go();
+        return $this->go();
     }
 
     /**
