@@ -30,6 +30,7 @@ class FunctionsTest extends TestCase
      */
     public function it_provides_wrappers_for_better_readability()
     {
-        $this->assertEquals(expect(123), 123);
+        $this->assertInstanceOf("Essence\Essence", expect(123));
+        $this->assertSame(expect($essence = essence(123)), $essence);
     }
 }
