@@ -161,6 +161,31 @@ class Essence
     }
 
     /**
+     * Adds a new link to the configuration array.
+     *
+     * @see Essence\Essence::$configuration
+     * @param string $link
+     * @return void
+     */
+    public function addLink($link)
+    {
+        $this->configuration["links"][] = $link;
+    }
+
+    /**
+     * Adds a new matcher to the configuration array.
+     *
+     * @see Essence\Essence::$configuration
+     * @param string $matcherClass
+     * @param array $aliases
+     * @return void
+     */
+    public function addMatcher($matcherClass, array $aliases)
+    {
+        $this->configuration["matchers"][$matcherClass] = $aliases;
+    }
+
+    /**
      * Returns the currently stored instance of AssertionBuilder.
      *
      * @see Essence\Essence::$builder
