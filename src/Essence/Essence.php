@@ -18,7 +18,7 @@ class Essence
         "exception" => "Essence\Exceptions\AssertionException",
 
         // When a new assertion was created, validate the previous one.
-        "implicit_validation" => true,
+        "implicit_validation" => false,
 
         // These don't have any special meaning, but do drastically improve the readability.
         "links" => [
