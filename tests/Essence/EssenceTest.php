@@ -125,13 +125,11 @@ class EssenceTest extends \TestCase
         $builder1 = $this->mockAssertionBuilder();
         $builder2 = $this->mockAssertionBuilder();
 
-        // Turn off implicit validation.
-        $this->subject->configure(function() {
-            return ["implicit_validation" => false];
-        });
+        // Enable implicit validaiton.
+        $this->subject->implicitValidation(true);
 
         $builder1->shouldReceive("validate", "setLinks", "setMatchers")
-            ->once()->andReturn(true);
+            ->twice()->andReturn(true);
 
         $builder2->shouldReceive("validate", "setLinks", "setMatchers")
             ->once()->andReturn(true);
@@ -142,6 +140,7 @@ class EssenceTest extends \TestCase
         $this->subject->validateAll();
         $this->assertSame($builder2, $this->subject->getBuilder());
 
+        // Intended.
         $this->subject->validateAll();
         $this->assertSame($builder2, $this->subject->getBuilder());
     }
