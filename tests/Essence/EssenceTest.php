@@ -141,6 +141,9 @@ class EssenceTest extends \TestCase
 
         $this->subject->validateAll();
         $this->assertSame($builder2, $this->subject->getBuilder());
+
+        $this->subject->validateAll();
+        $this->assertSame($builder2, $this->subject->getBuilder());
     }
 
     /**
