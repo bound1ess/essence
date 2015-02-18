@@ -220,6 +220,7 @@ class Essence
      * Replaces the stored AssertionBuilder instance with the given one.
      *
      * @see Essence\Essence::$builder
+     * @see Essence\Essence::$builders
      * @see Essence\Essence::getBuilder
      * @param Essence\AssertionBuilder $builder
      * @return void
@@ -278,6 +279,8 @@ class Essence
             $this->builder = $builder;
             $this->go();
         }
+
+        $this->builders = [];
     }
 
     /**
