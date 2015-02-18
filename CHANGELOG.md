@@ -10,6 +10,10 @@ This release will be dedicated to providing more readable and informative error 
 
 ## Changes
 
+### 1.2.1
+
+A problem with `Essence::validateAll` (introduced in `1.2.0`) was fixed.
+
 ### 1.2.0
 
 - new configuration option `implicit_validation`, new method `Essence::implicitValidation`
