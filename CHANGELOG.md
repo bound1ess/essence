@@ -10,9 +10,10 @@ This release will be dedicated to providing more readable and informative error 
 
 ## Changes
 
-### 1.2.1
+### 1.2.1, 1.2.2
 
-A problem with `Essence::validateAll` (introduced in `1.2.0`) was fixed.
+- a problem with incorrect default value of `implicit_validation` (`1.2.0`) was fixed
+- a problem with `Essence::validateAll` (introduced in `1.2.0`) was fixed
 
 ### 1.2.0
 
