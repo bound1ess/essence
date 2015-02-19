@@ -28,7 +28,7 @@ class EmptyMatcher extends AbstractMatcher
 
         if ( ! empty ($this->value)) {
             $this->setMessage(
-                "EmptyMatcher: %s is not empty.",
+                "%s is not empty",
                 [$this->value]
             );
 

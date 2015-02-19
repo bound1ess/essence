@@ -36,7 +36,7 @@ class ValuesMatcher extends AbstractMatcher
         foreach ($elements as $element) {
             if ( ! in_array($element, $this->value, true)) {
                 $this->setMessage(
-                    "ValuesMatcher: the given array does not contain %s.",
+                    "the given array does not contain %s",
                     [$element]
                 );
 

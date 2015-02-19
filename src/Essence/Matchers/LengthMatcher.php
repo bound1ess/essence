@@ -36,7 +36,7 @@ class LengthMatcher extends AbstractMatcher
 
         if ($length !== $actualLength) {
             $this->setMessage(
-                "LengthMatcher: %s (expected) !== %s (actual).",
+                "%s (expected) !== %s (actual)",
                 [$length, $actualLength]
             );
 

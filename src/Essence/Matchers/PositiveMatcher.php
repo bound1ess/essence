@@ -31,7 +31,7 @@ class PositiveMatcher extends AbstractMatcher
         }
 
         $this->setMessage(
-            "PositiveMatcher: %s is not positive.",
+            "%s is not positive",
             [$this->value]
         );
 

@@ -24,7 +24,7 @@ class AboveMatcher extends AbstractMatcher
             return true;
         }
 
-        $this->setMessage("AboveMatcher: %s is not greater than %s.", [$this->value, $number]);
+        $this->setMessage("%s is not greater than %s", [$this->value, $number]);
 
         return false;
     }

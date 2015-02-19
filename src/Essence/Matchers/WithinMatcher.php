@@ -25,8 +25,8 @@ class WithinMatcher extends AbstractMatcher
         }
 
         $this->setMessage(
-            "WithinMatcher: (%s <= %s <= %s) === FALSE.",
-            [$least, $this->value, $most]
+            "%s is not within %s and %s",
+            [$this->value, $least, $most]
         );
 
         return false;

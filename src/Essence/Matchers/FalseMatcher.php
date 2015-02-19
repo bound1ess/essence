@@ -19,7 +19,7 @@ class FalseMatcher extends AbstractMatcher
         parent::run();
 
         if ($this->value !== false) {
-            $this->setMessage("FalseMatcher: FALSE (expected) !== TRUE (actual).");
+            $this->setMessage("false (expected) !== true (actual)");
 
             return false;
         }

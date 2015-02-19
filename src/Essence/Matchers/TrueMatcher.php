@@ -19,7 +19,7 @@ class TrueMatcher extends AbstractMatcher
         parent::run();
 
         if ($this->value !== true) {
-            $this->setMessage("TrueMatcher: TRUE (expected) !== FALSE (actual).");
+            $this->setMessage("true (expected) !== false (actual)");
 
             return false;
         }

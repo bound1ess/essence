@@ -28,7 +28,7 @@ class NullMatcher extends AbstractMatcher
 
         if ( ! is_null($this->value)) {
             $this->setMessage(
-                "NullMatcher: NULL (expected) !== %s (actual).",
+                "null (expected) !== %s (actual)",
                 [$this->value]
             );
 

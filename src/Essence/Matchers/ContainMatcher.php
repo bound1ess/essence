@@ -31,7 +31,7 @@ class ContainMatcher extends AbstractMatcher
 
         if ( ! $result) {
             $this->setMessage(
-                "ContainMatcher: %s does not contain %s.",
+                "%s does not contain %s",
                 [$this->value, $element]
             );
 

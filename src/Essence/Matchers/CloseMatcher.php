@@ -22,7 +22,7 @@ class CloseMatcher extends AbstractMatcher
 
         if (abs($this->value - $number) > $delta) {
             $this->setMessage(
-                "CloseMatcher: %s is not approximately equal to %s.", [$this->value, $number]
+                "%s is not approximately equal to %s", [$this->value, $number]
             );
 
             return false;

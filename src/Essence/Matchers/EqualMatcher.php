@@ -33,7 +33,7 @@ class EqualMatcher extends AbstractMatcher
         }
 
         $this->setMessage(
-            "EqualMatcher: %s !== %s.",
+            "%s !== %s",
             [$this->value, $anotherValue]
         );
 

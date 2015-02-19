@@ -31,7 +31,7 @@ class ThrowMatcher extends AbstractMatcher
                 return true;
             } else {
                 $this->setMessage(
-                    "ThrowMatcher: %s was expected, but got %s.",
+                    "%s was expected, but got %s",
                     [$class, get_class($exception)]
                 );
 
@@ -39,7 +39,7 @@ class ThrowMatcher extends AbstractMatcher
             }
         }
 
-        $this->setMessage("ThrowMatcher: nothing was thrown.");
+        $this->setMessage("nothing was thrown");
 
         return false;
     }

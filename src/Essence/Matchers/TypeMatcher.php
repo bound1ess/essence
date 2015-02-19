@@ -34,7 +34,7 @@ class TypeMatcher extends AbstractMatcher
             }
 
             $this->setMessage(
-                "TypeMatcher: %s is not of type %s.",
+                "%s is not of type %s",
                 [$this->value, $type]
             );
 
@@ -45,7 +45,7 @@ class TypeMatcher extends AbstractMatcher
             }
 
             $this->setMessage(
-                "TypeMatcher: %s is not an instance of %s.",
+                "%s is not an instance of %s",
                 [$this->value, $type]
             );
 

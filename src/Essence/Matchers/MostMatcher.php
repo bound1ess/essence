@@ -25,7 +25,7 @@ class MostMatcher extends AbstractMatcher
         }
 
         $this->setMessage(
-            "MostMatcher: %s is not equal to %s, or less.",
+            "%s is not equal to %s, or less",
             [$this->value, $number]
         );
 
