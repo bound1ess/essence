@@ -28,6 +28,8 @@ class CloseMatcher extends AbstractMatcher
             return false;
         }
 
+        $this->setMessage("%s is approximately equal to %s", [$this->value, $number]);
+
         return true;
     }
 }

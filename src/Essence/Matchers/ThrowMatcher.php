@@ -28,6 +28,8 @@ class ThrowMatcher extends AbstractMatcher
         catch (\Exception $exception)
         {
             if (get_class($exception) == $class) {
+                $this->setMessage("got %s, just as expected", [$class]);
+
                 return true;
             } else {
                 $this->setMessage(

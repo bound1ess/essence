@@ -43,14 +43,13 @@ class KeysMatcher extends AbstractMatcher
 
         foreach ($elements as $key) {
             if ( ! in_array($key, $keys, true)) {
-                $this->setMessage(
-                    "the key %s does not exist in %s",
-                    [$key, $this->value]
-                );
+                $this->setMessage("key %s does not exist in %s", [$key, $this->value]);
 
                 return false;
             }
         }
+
+        $this->setMessage("key %s exists in %s", [$key, $this->value]);
 
         return true;
     }

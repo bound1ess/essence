@@ -21,6 +21,8 @@ class AboveMatcher extends AbstractMatcher
         list($number) = $this->arguments;
 
         if ($this->value > $number) {
+            $this->setMessage("%s is greater than %s", [$this->value, $number]);
+
             return true;
         }
 

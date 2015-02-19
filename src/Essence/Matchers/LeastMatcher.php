@@ -21,13 +21,12 @@ class LeastMatcher extends AbstractMatcher
         list($number) = $this->arguments;
 
         if ($this->value >= $number) {
+            $this->setMessage("%s is equal to %s, or greater", [$this->value, $number]);
+
             return true;
         }
 
-        $this->setMessage(
-            "%s is not equal to %s, or greater",
-            [$this->value, $number]
-        );
+        $this->setMessage("%s is not equal to %s, or greater", [$this->value, $number]);
 
         return false;
     }

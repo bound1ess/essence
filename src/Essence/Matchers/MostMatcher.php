@@ -21,13 +21,12 @@ class MostMatcher extends AbstractMatcher
         list($number) = $this->arguments;
 
         if ($this->value <= $number) {
+            $this->setMessage("%s is equal to %s, or less", [$this->value, $number]);
+
             return true;
         }
 
-        $this->setMessage(
-            "%s is not equal to %s, or less",
-            [$this->value, $number]
-        );
+        $this->setMessage("%s is not equal to %s, or less", [$this->value, $number]);
 
         return false;
     }

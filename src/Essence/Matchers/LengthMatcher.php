@@ -22,7 +22,7 @@ class LengthMatcher extends AbstractMatcher
         $actualLength = null;
 
         if (is_string($this->value)) {
-            // @suggestion: multibyte?
+            // @suggestion multibyte?
             $actualLength = strlen($this->value);
         }
 
@@ -36,12 +36,14 @@ class LengthMatcher extends AbstractMatcher
 
         if ($length !== $actualLength) {
             $this->setMessage(
-                "%s (expected) !== %s (actual)",
+                "%s (expected length) is not equal to %s (actual length)",
                 [$length, $actualLength]
             );
 
             return false;
         }
+
+        $this->setMessage("%s and %s have identical length", [$length, $actualLength]);
 
         return true;
     }

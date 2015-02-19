@@ -30,13 +30,12 @@ class ContainMatcher extends AbstractMatcher
         }
 
         if ( ! $result) {
-            $this->setMessage(
-                "%s does not contain %s",
-                [$this->value, $element]
-            );
+            $this->setMessage("%s does not contain %s", [$this->value, $element]);
 
             return false;
         }
+
+        $this->setMessage("%s contains %s", [$this->value, $element]);
 
         return true;
     }

@@ -27,13 +27,12 @@ class NullMatcher extends AbstractMatcher
         parent::run();
 
         if ( ! is_null($this->value)) {
-            $this->setMessage(
-                "null (expected) !== %s (actual)",
-                [$this->value]
-            );
+            $this->setMessage("%s is not NULL", [$this->value]);
 
             return false;
         }
+
+        $this->setMessage("the given value is NULL");
 
         return true;
     }

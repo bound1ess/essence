@@ -27,13 +27,12 @@ class EmptyMatcher extends AbstractMatcher
         parent::run();
 
         if ( ! empty ($this->value)) {
-            $this->setMessage(
-                "%s is not empty",
-                [$this->value]
-            );
+            $this->setMessage("%s is not empty", [$this->value]);
 
             return false;
         }
+
+        $this->setMessage("%s is empty", [$this->value]);
 
         return true;
     }

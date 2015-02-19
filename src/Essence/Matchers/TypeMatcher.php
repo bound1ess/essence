@@ -30,24 +30,22 @@ class TypeMatcher extends AbstractMatcher
 
         if (in_array($type, $this->valueType)) {
             if (gettype($this->value) == $type) {
+                $this->setMessage("%s is of type %s", [$this->value, $type]);
+
                 return true;
             }
 
-            $this->setMessage(
-                "%s is not of type %s",
-                [$this->value, $type]
-            );
+            $this->setMessage("%s is not of type %s", [$this->value, $type]);
 
             return false;
         } else {
             if (is_object($this->value) and get_class($this->value) == $type) {
+                $this->setMessage("%s is an instance of %s", [$this->value, $type]);
+
                 return true;
             }
 
-            $this->setMessage(
-                "%s is not an instance of %s",
-                [$this->value, $type]
-            );
+            $this->setMessage("%s is not an instance of %s", [$this->value, $type]);
 
             return false;
         }

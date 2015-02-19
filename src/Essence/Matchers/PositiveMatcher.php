@@ -27,13 +27,12 @@ class PositiveMatcher extends AbstractMatcher
         parent::run();
 
         if ( !! $this->value) {
+            $this->setMessage("%s is positive", [$this->value]);
+
             return true;
         }
 
-        $this->setMessage(
-            "%s is not positive",
-            [$this->value]
-        );
+        $this->setMessage("%s is not positive", [$this->value]);
 
         return false;
     }

@@ -21,13 +21,12 @@ class WithinMatcher extends AbstractMatcher
         list($least, $most) = $this->arguments;
 
         if (($least <= $this->value) and ($this->value <= $most)) {
+            $this->setMessage("%s is within %s and %s", [$this->value, $least, $most]);
+
             return true;
         }
 
-        $this->setMessage(
-            "%s is not within %s and %s",
-            [$this->value, $least, $most]
-        );
+        $this->setMessage("%s is not within %s and %s", [$this->value, $least, $most]);
 
         return false;
     }

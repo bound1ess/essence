@@ -22,12 +22,14 @@ class RespondMatcher extends AbstractMatcher
 
         if ( ! method_exists($this->value, $method)) {
             $this->setMessage(
-                "the given object does not have a method called %s",
-                [$method]
+                "%s does not have a method called %s",
+                [$this->value, $method]
             );
 
             return false;
         }
+
+        $this->setMessage("%s has a method called %s", [$this->value, $method]);
 
         return true;
     }
