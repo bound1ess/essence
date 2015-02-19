@@ -111,9 +111,18 @@ abstract class AbstractMatcher implements MatcherInterface
      */
     protected function setMessage($message, array $parameters = [])
     {
+        $message = sprintf(
+            "%s: %s.",
+            (new \ReflectionClass($this))->getShortName(),
+            $message
+        );
+
         $parameters = array_map([$this->getDumper(), "dump"], $parameters);
 
-        $this->message = call_user_func_array("sprintf", array_merge([$message], $parameters));
+        $this->message = call_user_func_array(
+            "sprintf",
+            array_merge([$message], $parameters)
+        );
     }
 
     /**
