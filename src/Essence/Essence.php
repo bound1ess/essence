@@ -271,7 +271,7 @@ class Essence
      *
      * @see Essence\Essence::$builders
      * @see Essence\Essence::go
-     * @return void
+     * @return integer
      */
     public function validateAll()
     {
@@ -280,7 +280,10 @@ class Essence
             $this->go();
         }
 
+        $executed = count($this->builders);
         $this->builders = [];
+
+        return $executed;
     }
 
     /**

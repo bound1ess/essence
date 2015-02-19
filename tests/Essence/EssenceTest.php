@@ -137,11 +137,11 @@ class EssenceTest extends \TestCase
         $this->subject->setBuilder($builder1);
         $this->subject->setBuilder($builder2);
 
-        $this->subject->validateAll();
+        $this->assertSame(2, $this->subject->validateAll());
         $this->assertSame($builder2, $this->subject->getBuilder());
 
         // Intended.
-        $this->subject->validateAll();
+        $this->assertSame(0, $this->subject->validateAll());
         $this->assertSame($builder2, $this->subject->getBuilder());
     }
 
