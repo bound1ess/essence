@@ -2,13 +2,17 @@
 
 ## Upcoming
 
-### 1.3.0
+### 1.4.0
 
 This release will be dedicated to providing more readable and informative error messages.
 - handle `not` keyword properly (show full error message)
 - when doing some sort of comparison, show *diff* (difference between the two values)
 
 ## Changes
+
+### 1.3.0
+
+- integrate Essence with PHPUnit (count assertions)
 
 ### 1.2.1, 1.2.2
 
