@@ -170,6 +170,9 @@ class AssertionBuilder
 
                 break;
             }
+
+            // We want to grab the message anyway.
+            $this->message = $matcher->getMessage();
         }
 
         // #4: if the result should be inversed, do it.
@@ -177,7 +180,7 @@ class AssertionBuilder
             $this->inverse = false;
             $result = ! $result;
 
-            $this->message = "The keyword NOT was used to inverse the result.";
+            $this->message = "NOT keyword (failed): ".$this->message;
         }
 
         return $result;
