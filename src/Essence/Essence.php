@@ -248,8 +248,12 @@ class Essence
         $this->builder->setMatchers($this->configuration["matchers"]);
 
         if ( ! $this->builder->validate()) {
-            $this->throwOnFailure($this->builder->getMessage());
             // @codeCoverageIgnoreStart
+            if ($verbose) {
+                $this->dumpValueAndArguments($this->builder->getLastMatcher());
+            }
+
+            $this->throwOnFailure($this->builder->getMessage());
         }
         // @codeCoverageIgnoreEnd
 
@@ -286,6 +290,24 @@ class Essence
         $this->builders = [];
 
         return $executed;
+    }
+
+    /**
+     * "Dumps" given matcher's value and its arguments.
+     *
+     * @param Essence\Matchers\AbstractMatcher
+     * @return void
+     */
+    protected function dumpValueAndArguments(Matchers\AbstractMatcher $matcher)
+    {
+        printf("Value: %s" . PHP_EOL, $matcher->getDumper()->dump($matcher->getValue()));
+        print ("Arguments:");
+
+        foreach ($matcher->getArguments() as $key => $argument) {
+            printf("#%s: %s" . PHP_EOL, $key, $matcher->getDumper()->dump($argument));
+        }
+
+        exit;
     }
 
     /**

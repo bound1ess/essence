@@ -61,6 +61,16 @@ class AssertionBuilder
     }
 
     /**
+     * Returns the last matcher that was validated.
+     *
+     * @return Essence\Matchers\AbstractMatcher
+     */
+    protected function getLastMatcher()
+    {
+        return $this->lastMatcher;
+    }
+
+    /**
      * Swaps the links array with the given one.
      *
      * @see Essence\AssertionBuilder::$links

@@ -11,14 +11,14 @@ abstract class AbstractMatcher implements MatcherInterface
      *
      * @var mixed
      */
-    public $value;
+    protected $value;
 
     /**
      * The matcher arguments, can be an empty array (if there are none).
      *
      * @var array
      */
-    public $arguments;
+    protected $arguments;
 
     /**
      * The type(s) that the passed value should be of (one of them).
@@ -99,6 +99,24 @@ abstract class AbstractMatcher implements MatcherInterface
     public function getMessage()
     {
         return $this->message;
+    }
+
+    /**
+     * @see Essence\Matchers\AbstractMatcher::$value
+     * @return mixed
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * @see Essence\Matchers\AbstractMatcher::$arguments
+     * @return mixed
+     */
+    public function getArguments()
+    {
+        return $this->arguments;
     }
 
     /**
