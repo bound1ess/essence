@@ -15,7 +15,8 @@
     "require": {
         "php": ">=5.4.0",
         "php-packages/container": "~1",
-        "php-packages/fluent": "~1"
+        "php-packages/fluent": "~1",
+        "php-packages/dumpy": "~1"
     },
 
     "require-dev": {
