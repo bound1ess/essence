@@ -301,10 +301,10 @@ class Essence
     protected function dumpValueAndArguments(Matchers\AbstractMatcher $matcher)
     {
         printf("Value: %s" . PHP_EOL, $matcher->getDumper()->dump($matcher->getValue()));
-        print ("Arguments:");
+        print ("Arguments:" . PHP_EOL);
 
         foreach ($matcher->getArguments() as $key => $argument) {
-            printf("#%s: %s" . PHP_EOL, $key, $matcher->getDumper()->dump($argument));
+            printf("  #%s: %s" . PHP_EOL, $key + 1, $matcher->getDumper()->dump($argument));
         }
 
         exit;

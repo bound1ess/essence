@@ -160,7 +160,7 @@ abstract class AbstractMatcher implements MatcherInterface
      *
      * @return Essence\VarDumper
      */
-    protected function getDumper()
+    public function getDumper()
     {
         return $this->dumper;
     }

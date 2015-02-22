@@ -65,7 +65,7 @@ class AssertionBuilder
      *
      * @return Essence\Matchers\AbstractMatcher
      */
-    protected function getLastMatcher()
+    public function getLastMatcher()
     {
         return $this->lastMatcher;
     }
