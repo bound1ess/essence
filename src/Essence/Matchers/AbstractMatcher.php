@@ -11,14 +11,14 @@ abstract class AbstractMatcher implements MatcherInterface
      *
      * @var mixed
      */
-    protected $value;
+    public $value;
 
     /**
      * The matcher arguments, can be an empty array (if there are none).
      *
      * @var array
      */
-    protected $arguments;
+    public $arguments;
 
     /**
      * The type(s) that the passed value should be of (one of them).

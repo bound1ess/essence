@@ -43,6 +43,13 @@ class AssertionBuilder
     protected $inverse = false;
 
     /**
+     * The last matcher that was validated.
+     *
+     * @var Essence\Matchers\AbstractMatcher
+     */
+    protected $lastMatcher;
+
+    /**
      * The class constructor.
      *
      * @param null|mixed $value
@@ -164,6 +171,8 @@ class AssertionBuilder
 
         // #3: run the matchers!
         foreach ($matchers as $matcher) {
+            $this->lastMatcher = $matcher;
+
             if ( ! $matcher->run()) {
                 $this->message = $matcher->getMessage();
                 $result = false;

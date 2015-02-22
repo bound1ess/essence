@@ -239,9 +239,10 @@ class Essence
      * Explicitly performs the validation.
      *
      * @throws Essence\Exceptions\AssertionException|object
+     * @param boolean $verbose
      * @return boolean
      */
-    public function go()
+    public function go($verbose = false)
     {
         $this->builder->setLinks($this->configuration["links"]);
         $this->builder->setMatchers($this->configuration["matchers"]);
@@ -259,11 +260,12 @@ class Essence
      * Alias of Essence\Essence::go().
      *
      * @see Essence\Essence::go
+     * @param boolean $verbose
      * @return boolean
      */
-    public function validate()
+    public function validate($verbose = false)
     {
-        return $this->go();
+        return $this->go($verbose);
     }
 
     /**
