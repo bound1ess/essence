@@ -48,7 +48,7 @@ class Essence
             "Essence\Matchers\MatchMatcher"    => ["match"],
             "Essence\Matchers\KeysMatcher"     => ["keys", "key"],
             "Essence\Matchers\ValuesMatcher"   => ["values", "value"],
-            "Essence\Matchers\ThrowMatcher"    => ["throw"],
+            "Essence\Matchers\ThrowMatcher"    => ["throw", "raise"],
             "Essence\Matchers\RespondMatcher"  => ["respond"],
             "Essence\Matchers\CloseMatcher"    => ["close"],
         ],
@@ -295,6 +295,7 @@ class Essence
     /**
      * "Dumps" given matcher's value and its arguments.
      *
+     * @codeCoverageIgnore
      * @param Essence\Matchers\AbstractMatcher
      * @return void
      */

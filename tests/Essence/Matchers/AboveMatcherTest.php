@@ -15,6 +15,9 @@ class AboveMatcherTest extends \MatcherTestCase
         $this->assertFalse($matcher->run());
         $this->assertNotNull($matcher->getMessage());
 
+        $this->assertEquals($matcher->getValue(), 18);
+        $this->assertEquals($matcher->getArguments(), [20]);
+
         $this->assertTrue((new AboveMatcher(15, [13]))->run());
     }
 }

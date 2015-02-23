@@ -66,6 +66,7 @@ class AssertionBuilderTest extends \TestCase
         $this->assertFalse($this->subject->validate());
 
         $this->assertEquals($this->subject->getMessage(), "foobar");
+        $this->assertInternalType("object", $this->subject->getLastMatcher());
     }
 
     /**
