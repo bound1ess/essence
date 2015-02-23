@@ -11,9 +11,23 @@ composer require --dev bound1ess/essence
 
 ## The Idea
 
-...
+In most PHP testing frameworks, you are tied to *concrete matcher names* (e.g., `assertEqual`, `shouldHaveType`).
+I don't like that.
+That's why I created Essence.
 
 ## Usage
+
+...
+
+### Configuration
+
+...
+
+### Explicit and implicit, validateAll and PHPUnit extension
+
+...
+
+### Verbose mode
 
 ...
 
