@@ -42,15 +42,77 @@ So, how do you build a query string (or *assertion*)?
 
 ### Configuration
 
-...
+First of all, Essence leverages the singleton pattern to persist all its important data during the runtime. It means that this expression will always be equal to `true`:
+
+```php
+spl_object_hash(essence()) == spl_object_hash(essence());
+```
+
+You can configure Essence by using `configure` method:
+
+```php
+essence()->configure(function($config) {
+    return array_merge($config, [
+        "exception" => "Your\Custom\AssertionException",
+    ]);
+});
+```
+
+Available configuration options:
+
+| Name | Possible value |
+-------|-----------------
+| exception | fully qualified class name (as a string) |
+| implicit_validation | a boolean value (`true` or `false`) |
+| links | an array (won't be merged automatically) |
+| matchers | an associative array *name => aliases* (won't be merged automatically) |
 
 ### Explicit and implicit, validateAll and PHPUnit extension
 
-...
+If you don't want to write `->validate()` or `->go()` every time, you can enable *implicit validation*:
+
+```php
+essence()->configure(function() {
+    return [
+        "implicit_validation" => true,
+    ];
+});
+```
+
+It will validate the last (previous) assertion when you create a new one.
+Or, even better, just use the PHPUnit extension as shown below:
+
+```php
+class MyTestCase extends Essence\Extensions\PhpunitExtension
+{
+
+    // Your assertions here.
+}
+```
+
+It'll do the job for you, no need to configure anything or call `go/validate`.
 
 ### Verbose mode
 
-...
+This line of code will throw an `Essence\Exceptions\AssertionException` by default:
+
+```php
+expect(10)->to_be_equal_to(15)->validate(); // You can also use "go" instead of "validate".
+```
+
+However, if you pass `true` to `validate/go`, Essence will dump all important data and just `exit`.
+
+```php
+expect(10)->to_be_equal_to(15)->validate(true);
+```
+
+```shell
+vendor/bin/phpunit
+# ........
+Value: 10
+Arguments:
+  #1: 15
+```
 
 ## Cheatsheet
 
