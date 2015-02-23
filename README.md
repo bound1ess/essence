@@ -1,6 +1,25 @@
 # Essence [![Build Status](https://travis-ci.org/bound1ess/essence.svg?branch=master)](https://travis-ci.org/bound1ess/essence)
 
-Read the [documentation](http://bound1ess.github.io/essence).
+Essence is a very flexible BDD style assertion framework for PHP that fits into existing
+ PHPUnit projects nicely.
+
+## Installation
+
+```
+composer require --dev bound1ess/essence
+```
+
+## The Idea
+
+...
+
+## Usage
+
+...
+
+## Cheatsheet
+
+...
 
 ## License
 
@@ -19,13 +38,11 @@ make run-tests
 ### Creating code coverage report
 
 ```shell
-make coverage-report
-make coverage-report-server
+make coverage-report coverage-report-server
 ```
 
 ### Building documentation
 
 ```shell
-make build-docs
-make docs-server
+make build-docs docs-server
 ```
