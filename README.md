@@ -17,7 +17,28 @@ That's why I created Essence.
 
 ## Usage
 
-...
+In order to run a matcher you need to specify it in the *query string*.
+So what is a query string? Have a look:
+
+```php
+this("someValue")->should_have_length_of(10); # => "someValue should have length of 10"
+expect(123)->toBeAbove(120); # => "expect 123 to be above 120"
+
+$elements = [1, 2, 3, 4, 5];
+these($elements)->values->should_contain(5); # => "these elements should contain a value '5'"
+
+expect(null)->not()->to()->beNull(); => "expect NULL not to be NULL"
+```
+
+Yes, Essence is smart enough to handle all these cases just as you would expect it to do.
+So, how do you build a query string (or *assertion*)?
+
+1. Decide if you need to configure a matcher you plan to use. As for now there are two only matchers that can be used in *configuration* mode - `ValuesMatcher` and `KeysMatcher`.
+2. Determine what matcher you will need to use to get the job done. Is it `ThrowMatcher`, or, say, `RespondMatcher`?
+3. Add some *links* to make the assertion **readable**.
+4. Choose an appropriate entry point (`expect`, `this`, `these` etc).
+5. Pass a proper value and arguments.
+6. If you want to, add `->go()` to immediately perform validation. I'll tell you more about that later.
 
 ### Configuration
 
@@ -32,6 +53,15 @@ That's why I created Essence.
 ...
 
 ## Cheatsheet
+
+### Entry points
+
+- essence
+- it
+- that
+- this
+- these
+- those
 
 ### Links
 
