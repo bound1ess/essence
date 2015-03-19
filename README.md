@@ -145,6 +145,7 @@ Arguments:
 | NullMatcher     | null             |
 | EmptyMatcher    | empty            |
 | EqualMatcher    | equal            |
+| LikeMatcher     | like             |
 | AboveMatcher    | above            |
 | BelowMatcher    | below            |
 | LeastMatcher    | least            |
