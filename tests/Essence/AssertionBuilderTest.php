@@ -43,19 +43,21 @@ class AssertionBuilderTest extends \TestCase
         $fluent = \Mockery::mock("PhpPackages\Fluent\Fluent");
 
         $fluent->shouldReceive("getCalls")
-               ->times(4)
+               ->times(5)
                ->andReturn(
-                   ["should", "not", "of"],
-                   ["keys"],
-                   ["length", ["of", 6]],
-                   ["have", ["length", 10]]
+                    ["should", "not", "of"],
+                    ["keys"],
+                    ["length", ["of", 6]],
+                    ["have", ["length", 10]],
+                    [["be", 1]]
                );
 
         $this->subject->setFluent($fluent);
-        $this->subject->setLinks(["of", "have"]);
+        $this->subject->setLinks(["be", "of", "have"]);
         $this->subject->setMatchers([
             "KeysMatcherStub"   => ["keys"],
             "LengthMatcherStub" => ["length"],
+            "EqualMatcherStub"  => ["equal"],
         ]);
 
         $this->assertNull($this->subject->getMessage());
@@ -64,6 +66,7 @@ class AssertionBuilderTest extends \TestCase
         $this->assertFalse($this->subject->validate());
         $this->assertFalse($this->subject->validate());
         $this->assertFalse($this->subject->validate());
+        $this->assertTrue($this->subject->validate());
 
         $this->assertEquals($this->subject->getMessage(), "foobar");
         $this->assertInternalType("object", $this->subject->getLastMatcher());
