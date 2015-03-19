@@ -22,5 +22,14 @@ class ThrowMatcherTest extends \MatcherTestCase
         $this->assertTrue((new ThrowMatcher(function() {
             throw new \UnexpectedValueException;
         }, ["UnexpectedValueException"]))->run());
+
+        // Create some sort of "context".
+        $context = new ThrowMatcherTest;
+
+        $this->assertFalse((new ThrowMatcher(function() {
+            if ($this instanceof ThrowMatcherTest) {
+                throw new \Exception("Hello, world!");
+            }
+        }, ["Exception", "hello world", $context]))->run());
     }
 }
