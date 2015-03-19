@@ -18,16 +18,32 @@ class ThrowMatcher extends AbstractMatcher
     {
         parent::run();
 
-        list($class) = $this->arguments;
+        $arguments = array_slice(array_merge($this->arguments, [null, null]), 0, 3);
+
+        list ($class, $message, $context) = $arguments;
 
         try
         {
             $callback = $this->value;
+
+            if ( ! is_null($context)) {
+                $callback = $callback->bindTo($context);
+            }
+
             $callback();
         }
         catch (\Exception $exception)
         {
             if (get_class($exception) == $class) {
+                if ( ! is_null($message) and $exception->getMessage() != $message) {
+                    $this->setMessage("expected error message %s is not equal to %s", [
+                        $message,
+                        $exception->getMessage(),
+                    ]);
+
+                    return false;
+                }
+
                 $this->setMessage("got %s, just as expected", [$class]);
 
                 return true;
