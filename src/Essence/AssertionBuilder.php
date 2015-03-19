@@ -159,6 +159,11 @@ class AssertionBuilder
             return true;
         }
 
+        // Think of "{{link}}(smth)" as "equal(smth)".
+        if (is_array($matchers[0]) and in_array($matchers[0][0], $this->links)) {
+            $matchers[0][0] = "equal";
+        }
+
         // #2: initialize the matchers.
         foreach ($matchers as $key => $matcher) {
             $class = $this->aliasToMatcher(is_array($matcher) ? $matcher[0] : $matcher);
