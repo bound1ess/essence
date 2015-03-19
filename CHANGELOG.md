@@ -10,6 +10,10 @@
 
 ## Changes
 
+### 1.4.1
+
+- the major documentation update
+
 ### 1.4.0
 
 This release is dedicated to providing more readable and informative error messages.
