@@ -1,4 +1,4 @@
-# Changlelog and upcoming features
+# Changes and upcoming features
 
 ## Upcoming
 

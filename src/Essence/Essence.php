@@ -39,6 +39,7 @@ class Essence
             "Essence\Matchers\NullMatcher"     => ["null"],
             "Essence\Matchers\EmptyMatcher"    => ["empty"],
             "Essence\Matchers\EqualMatcher"    => ["equal"],
+            "Essence\Matchers\LikeMatcher"     => ["like"],
             "Essence\Matchers\AboveMatcher"    => ["above"],
             "Essence\Matchers\LeastMatcher"    => ["least"],
             "Essence\Matchers\BelowMatcher"    => ["below"],
