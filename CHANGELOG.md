@@ -2,13 +2,15 @@
 
 ## Upcoming
 
+...
+
+## Changes
+
 ### 1.5.0
 
 - add `like` matcher (`expect('123')->to_be_like(123)`)
 - if no matchers were specified, assume `EqualMatcher`
 - update `throw` matcher, add `error_message` and `context` optional parameters
-
-## Changes
 
 ### 1.4.1
 
