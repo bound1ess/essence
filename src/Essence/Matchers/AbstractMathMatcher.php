@@ -6,12 +6,12 @@ abstract class AbstractMathMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
-    protected $valueType = ["integer"];
+    protected $valueType = ["integer", "array"];
 
     /**
-     * @var integer|null
+     * @var integer
      */
-    protected $number = null;
+    protected $number;
 
     /**
      * {@inheritdoc}
@@ -21,11 +21,13 @@ abstract class AbstractMathMatcher extends AbstractMatcher
         parent::run();
 
         if (count($this->arguments) > 0) {
-            $this->number = end($this->arguments);
+            $this->number = (int) end($this->arguments);
+        } else {
+            $this->incorrectUsage("Desired condition was not specified.");
         }
 
         if ($config = essence()->getMatcherConfiguration("Essence\Matchers\LengthMatcher")) {
-            $this->number = end($config);
+            $this->value = $config["length"];
         }
     }
 }
