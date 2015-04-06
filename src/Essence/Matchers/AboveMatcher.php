@@ -3,13 +3,8 @@
 /**
  * A > B.
  */
-class AboveMatcher extends AbstractMatcher
+class AboveMatcher extends AbstractMathMatcher
 {
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $valueType = ["integer"];
 
     /**
      * {@inheritdoc}
@@ -18,7 +13,7 @@ class AboveMatcher extends AbstractMatcher
     {
         parent::run();
 
-        list($number) = $this->arguments;
+        $number = $this->number;
 
         if ($this->value > $number) {
             $this->setMessage("%s is greater than %s", [$this->value, $number]);

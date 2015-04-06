@@ -3,13 +3,8 @@
 /**
  * A <= B.
  */
-class MostMatcher extends AbstractMatcher
+class MostMatcher extends AbstractMathMatcher
 {
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $valueType = ["integer"];
 
     /**
      * {@inheritdoc}
@@ -18,7 +13,7 @@ class MostMatcher extends AbstractMatcher
     {
         parent::run();
 
-        list($number) = $this->arguments;
+        $number = $this->number;
 
         if ($this->value <= $number) {
             $this->setMessage("%s is equal to %s, or less", [$this->value, $number]);
