@@ -22,5 +22,15 @@ class LengthMatcherTest extends \MatcherTestCase
         // Objects (keys).
         $object = (object)["foo" => 123, "bar" => 321];
         $this->assertTrue((new LengthMatcher($object, [2]))->run());
+
+        // Run in configuration mode.
+        (new LengthMatcher([1, 2, 3], [], true))->run();
+
+        $this->assertInternalType(
+            "array",
+            $config = essence()->getMatcherConfiguration("Essence\Matchers\LengthMatcher")
+        );
+
+        $this->assertEquals(3, $config["length"]);
     }
 }

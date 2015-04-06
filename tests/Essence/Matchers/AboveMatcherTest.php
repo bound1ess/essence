@@ -18,6 +18,20 @@ class AboveMatcherTest extends \MatcherTestCase
         $this->assertEquals($matcher->getValue(), 18);
         $this->assertEquals($matcher->getArguments(), [20]);
 
-        $this->assertTrue((new AboveMatcher(15, [13]))->run());
+        essence()->setMatcherConfiguration("Essence\Matchers\LengthMatcher", [
+            "length" => 15,
+        ]);
+
+        $this->assertTrue((new AboveMatcher(10, [13]))->run());
+    }
+
+    /**
+     * @test
+     */
+    public function it_throws_an_exception_if_no_arguments_were_provided()
+    {
+        $this->setExpectedException("Essence\Exceptions\IncorrectUsageException");
+
+        (new AboveMatcher(6, []))->run();
     }
 }
