@@ -6,6 +6,10 @@
 
 ## Changes
 
+### 1.5.1
+
+- `LengthMatcher` now can be used in `configuration` mode
+
 ### 1.5.0
 
 - add `like` matcher (`expect('123')->to_be_like(123)`)
