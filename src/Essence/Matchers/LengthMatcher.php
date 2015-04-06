@@ -14,11 +14,15 @@ class LengthMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+    protected $modes = ["normal", "configuration"];
+
+    /**
+     * {@inheritdoc}
+     */
     public function run()
     {
         parent::run();
 
-        list($length) = $this->arguments;
         $actualLength = null;
 
         if (is_string($this->value)) {
@@ -33,6 +37,15 @@ class LengthMatcher extends AbstractMatcher
         if (is_object($this->value)) {
             $actualLength = count(get_object_vars($this->value));
         }
+
+        // The configuration mode.
+        if ($this->configurationOnly) {
+            essence()->setMatcherConfiguration(__CLASS__, ["length" => $actualLength]);
+
+            return true;
+        }
+
+        list($length) = $this->arguments;
 
         if ($length !== $actualLength) {
             $this->setMessage(
