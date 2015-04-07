@@ -2,7 +2,22 @@
 
 ## Upcoming
 
-...
+### 2.0.0
+
+- rewrite the code from scratch with new tests
+- only two "entry points" instead of 6(7): `expect` and `ensure`
+- no such thing as a "link"
+- easier to configure, improved `implicit_validation` feature
+- get rid of these matchers:
+    - `PositiveMatcher`
+    - `TrueMatcher`
+    - `FalseMatcher`
+    - `NullMatcher`
+    - `EmptyMatcher`
+- existing matchers will be reworked
+- add caching, speed up the framework
+- better support for *PhpUnit* and, later, *Clarity*
+- ...and many more
 
 ## Changes
 
